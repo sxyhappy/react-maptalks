@@ -1,0 +1,23 @@
+{
+  "name": "react-maptalks",
+  "version": "0.0.1",
+  "description": "react maptalks",
+  "main": "./dist/react-maptalks.js",
+  "types": "./dist/types",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "react",
+    "maptalks"
+  ],
+  "author": "sxyhappy",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "maptalks": "^0.49.4",
+    "@types/maptalks": "0.0.1"
+  }
+}
