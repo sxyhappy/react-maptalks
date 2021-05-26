@@ -1,5 +1,7 @@
-import { MapContainer } from './MapContainer';
+import { MtMap } from './MtMap';
+import { MtTileLayer } from "./MtTileLayer";
 
 export {
-  MapContainer
+  MtMap,
+  MtTileLayer
 }

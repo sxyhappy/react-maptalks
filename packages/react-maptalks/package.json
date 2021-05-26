@@ -5,6 +5,7 @@
   "main": "./dist/react-maptalks.js",
   "types": "./dist/types",
   "scripts": {
+    "start": "rollup -c -w",
     "build": "rollup -c"
   },
   "keywords": [
@@ -14,6 +15,7 @@
   "author": "sxyhappy",
   "license": "MIT",
   "dependencies": {
+    "@react-maptalks/core": "0.0.1"
   },
   "peerDependencies": {
     "react": "^17.0.2",

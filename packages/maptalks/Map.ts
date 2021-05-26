@@ -3,8 +3,8 @@ import { Layer } from "./Layer";
 import { SpatialReference } from "./SpatialReference";
 
 export interface MapOptions {
-  center?: [number, number] | Coordinate;
-  zoom?: number;
+  center: [number, number] | Coordinate;
+  zoom: number;
   spatialReference?: SpatialReference;
   baseLayer?: any;
   layers?: Layer[];
@@ -12,4 +12,6 @@ export interface MapOptions {
 
 export declare class Map {
   constructor(el: string | HTMLElement, options?: MapOptions);
+
+  public remove(): this;
 }
