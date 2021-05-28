@@ -4,3 +4,5 @@ export {
   MapContextProvider
 } from './MapContext';
 
+export { usePrevious } from './usePrevious';
+

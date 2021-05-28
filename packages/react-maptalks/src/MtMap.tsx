@@ -2,8 +2,7 @@ import { FC, useEffect, useRef, useState } from "react";
 import { Map, MapOptions } from "maptalks";
 import { MapContextProvider } from "@react-maptalks/core";
 
-export interface MtMap extends MapOptions {
-}
+export type MtMap = MapOptions
 
 export const MtMap: FC<MtMap> = ({children, ...rest}) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,7 +18,7 @@ export const MtMap: FC<MtMap> = ({children, ...rest}) => {
     return () => {
       map?.remove();
     }
-  }, [ref])
+  }, [ref, rest])
 
   return (
     <div ref={ref} style={{height: '100%', width: '100%'}}>
