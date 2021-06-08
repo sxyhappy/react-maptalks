@@ -3,12 +3,25 @@ import { Layer } from "./Layer";
 import { SpatialReference } from "./SpatialReference";
 import { Extent } from "./Extent";
 import { Renderer } from "./Renderer";
+import { PointExtent } from "./PointExtent";
+import { Point } from "./Point";
+import { Size } from "./Size";
+import { EventHandler, MapEvent } from "./MapEvent";
+
+export interface View {
+  zoom: number;
+  center: [number, number] | Coordinate;
+  pitch: number;
+  bearing: number;
+}
 
 export interface MapOptions {
-  center: [number, number] | Coordinate;
-  zoom: number;
+  center?: [number, number] | Coordinate;
+  zoom?: number;
+  bearing?: number,
+  pitch?: number,
   spatialReference?: SpatialReference;
-  baseLayer?: any;
+  baseLayer?: Layer;
   layers?: Layer[];
   centerCross?: boolean;
   seamlessZoom?: boolean;
@@ -17,16 +30,16 @@ export interface MapOptions {
   zoomAnimation?: boolean;
   zoomAnimationDuration?: number;
   panAnimation?: boolean;
-  panAnimationDuration?: boolean;
+  panAnimationDuration?: number;
   zoomable?: boolean;
   enableInfoWindow?: boolean;
   hitDetect?: boolean;
-  hitDetectLimit?: boolean;
-  fpsOnInteracting?: boolean;
-  layerCanvasLimitOnInteracting?: boolean;
-  maxZoom?: number;
-  minZoom?: number;
-  maxExtent?: Extent;
+  hitDetectLimit?: number;
+  fpsOnInteracting?: number;
+  layerCanvasLimitOnInteracting?: number;
+  maxZoom?: number | null;
+  minZoom?: number | null;
+  maxExtent?: Extent | null;
   fixCenterOnResize?: boolean;
   maxPitch?: number;
   maxVisualPitch?: number;
@@ -56,8 +69,124 @@ export interface MapOptions {
   devicePixelRatio?: number;
 }
 
-export declare class Map {
+export declare class Map implements MapEvent {
   constructor(el: string | HTMLElement, options?: MapOptions);
 
   public remove(): this;
+  public isLoaded(): boolean;
+  public getContainer(): HTMLElement;
+  public getSpatialReference(): SpatialReference;
+  public setSpatialReference(): this;
+  public getProjection(): Record<any, unknown>;
+  public getFullExtent(): Extent;
+  public setCursor(): this;
+  public resetCursor(): this;
+  public getCenter(): Coordinate;
+  public setCenter(): this;
+  public getSize(): number;
+  public getContainerExtent(): PointExtent
+  public getExtent(): Extent;
+  public getProjExtent(): Extent;
+  public getPrjExtent(): Extent;
+  public getMaxExtent(): Extent;
+  public setMaxExtent(ext: Extent): this;
+  public getZoom(): number;
+  public getZoomForScale(scale: number, fromZoom: number, isFraction: boolean): number;
+  public setZoom(zoom: number, options: { animation: boolean }): this;
+  public getMaxZoom(): number;
+  public setMaxZoom(zoom: number): number;
+  public getMinZoom(): number;
+  public setMinZoom(zoom: number): this;
+  public getMaxNativeZoom(): number;
+  public getGLZoom(): number;
+  public getGLScale(zoom?: number): number;
+  public zoomIn(): this;
+  public zoomOut(): this;
+  public isZooming(): boolean;
+  public isInteracting(): boolean;
+  public setCenterAndZoom(center: number, zoom: number): this;
+  public getFitZoom(ext: Extent, isFraction: boolean): number;
+  public getView(): Record<string, any>;
+  public setView(options: View): this;
+  public getResolution(zoom: number): number;
+  public getScale(zoom: number): number;
+  public fitExtent(ext: Extent, zoomOffset: number): this;
+  public getBaseLayer(): Layer;
+  public setBaseLayer(layer: Layer): this;
+  public removeBaseLayer(): this;
+  public getLayers(fn: (layer: Layer) => boolean): Layer[];
+  public getLayer(id: string): Layer | null | undefined;
+  public addLayer(layer: Layer): this;
+  public removeLayer(layer: string | string[] | Layer | Layer[]): this;
+  public sortLayers(layers: Layer[]): this;
+  public toDataURL(options?: { mimeType?: string, save?: boolean, fileName ?: string }): string;
+  public containerPointToViewPoint(containerPoint: Point, out?: Point): Point;
+  public viewPointToContainerPoint(viewPoint: Point, out?: Point): Point;
+  public checkSize(): this;
+  public locate(coordinate: Coordinate, dx: number, dy: number): Coordinate;
+  public getMainPanel(): HTMLElement;
+  public getPanels(): object;
+  public isRemoved(): boolean;
+  public isMoving(): boolean;
+  public getDevicePixelRatio(): number;
+  public offsetPlatform(): Point;
+  public getViewPoint(): Point;
+  public coordinateToPoint(coordinate: Coordinate, zoom?: number, out?: number): Point;
+  public pointToCoordinate(point: Point, zoom: number, out?: Coordinate): Coordinate;
+  public coordinateToViewPoint(coordinate: Coordinate, out?: Point): Point;
+  public viewPointToCoordinate(viewPoint: Point, out?: Coordinate): Coordinate;
+  public coordinateToContainerPoint(viewPoint: Point, out?: Coordinate): Coordinate;
+  public coordinateToContainerPoint(zoom?: number, out?: number): Point;
+  public containerPointToCoordinate(out?: Coordinate): Coordinate;
+  public containerToExtent(containerExtent: PointExtent): Extent;
+  public distanceToPixel(xDist: number, yDist: number): Size;
+  public distanceToPoint(xDist: number, yDist: number, zoom: number): Point;
+  public pixelToDistance(width: number, height: number): number;
+  public pointToDistance(xDist: number, yDist: number, zoom: number): Point;
+  public locateByPoint(coordinate: number, px: number, py: number): Coordinate;
+  public animateTo(view: View, options: { easing: string, duration: number }, fn: (frame: any) => void): this;
+  public isAnimating(): boolean;
+  public getFov(): number;
+  public setFov(fob: number): this;
+  public getBearing(): number;
+  public setBearing(bearing: number): number;
+  public getPitch(): number;
+  public setPitch(pitch: number): this;
+  public isFullScreen(): boolean;
+  public requestFullScreen(): this;
+  public cancelFullScreen(): this;
+  public panTo(coordinate: Coordinate, options?: { animation?: boolean, duration?: number }): this;
+  // public panBy();
+  // public toJSON();
+  // public computeLength();
+  // public computeGeometryLength();
+  // public computeGeometryArea();
+  // public identify();
+  // public zoomToPreviousView();
+  // public hasPreviousView();
+  // public zoomToNextView();
+  // public hasNextView();
+  // public getViewHistory();
+  // public addControl();
+  // public removeControl();
+  // public setMenu();
+  // public openMenu();
+  // public setMenuItems();
+  // public getMenuItems();
+  // public closeMenu();
+  // public removeMenu();
+  // public registerRenderer();
+  // public getRendererClass();
+  // public callInitHooks();
+  // public setOptions();
+  // public config();
+
+  on: EventHandler;
+  addEventListener: EventHandler;
+  once: EventHandler;
+  off: EventHandler;
+  removeEventListener: EventHandler;
+  listens: EventHandler;
+  copyEventListeners: (target: Record<string, unknown>) => this;
+  fire: (eventType: string, param: any) => this;
 }

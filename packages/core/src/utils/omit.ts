@@ -1,4 +1,4 @@
-export function omit<T extends Record<string, unknown>> (obj: T, key: string | string[] | null | undefined): Partial<T> {
+export function omit<T extends Record<string, any>> (obj: T, key?: string | string[]): Partial<T> {
   if (!key || (Array.isArray(key) && key.length === 0)) return obj;
 
   let tempKeys: string[];

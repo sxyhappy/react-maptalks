@@ -50,6 +50,7 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+          ReactLiveScope: require.resolve('./src/theme/ReactLiveScope/index.js')
         },
       },
     ],

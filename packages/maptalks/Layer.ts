@@ -1,5 +1,5 @@
 import { Map } from './Map';
-import { Event } from "./Event";
+import { EventHandler, MapEvent } from "./MapEvent";
 import { Geometry } from "./Geometry";
 
 export interface LayerOptions {
@@ -19,10 +19,19 @@ export interface LayerOptions {
   forceRenderOnRotating?: boolean;
 }
 
-export declare class Layer implements Event {
+export declare class Layer implements MapEvent {
   static fromJSON(json: string): Layer;
 
   constructor(options: LayerOptions);
+
+  on: EventHandler;
+  addEventListener: EventHandler;
+  once: EventHandler;
+  off: EventHandler;
+  removeEventListener: EventHandler;
+  listens: EventHandler;
+  copyEventListeners: (target: Record<string, unknown>) => this;
+  fire: (eventType: string, param: any) => this;
 
   public load(): void;
 
@@ -71,16 +80,4 @@ export declare class Layer implements Event {
   protected onLoad(): boolean;
 
   public isLoaded(): boolean;
-
-  addEventListener(eventsOn: string, handler: () => void, context: any): void;
-
-  listens(eventsOn: string, handler: () => void, context: any): void;
-
-  off(eventsOn: string, handler: () => void, context: any): void;
-
-  on(eventsOn: string, handler: () => void, context: any): void;
-
-  once(eventsOn: string, handler: () => void, context: any): void;
-
-  removeEventListener(eventsOn: string, handler: () => void, context: any): void;
 }

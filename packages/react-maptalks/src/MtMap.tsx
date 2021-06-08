@@ -1,28 +1,55 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef } from "react";
 import { Map, MapOptions } from "maptalks";
-import { MapContextProvider } from "@react-maptalks/core";
+import { MapContextProvider, omit } from "@react-maptalks/core";
+import { useElementProps } from "@react-maptalks/core";
 
-export type MtMap = MapOptions
+export interface MtMapProps extends MapOptions {
+  onReady?: (map: Map) => void
+}
 
-export const MtMap: FC<MtMap> = ({children, ...rest}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<Map | null>(null);
+const defaultProps: Partial<MtMapProps> = {
+  center: undefined,
+  zoom: undefined,
+  maxExtent: undefined,
+  spatialReference: undefined,
+  baseLayer: undefined,
+  maxZoom: undefined,
+  minZoom: undefined,
+}
+
+const MtMap = forwardRef<Map, MtMapProps>(({children, ...props}, ref) => {
+  const eleRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<MtMapProps>()
+  const [map, setMap] = useState<Map | undefined>();
+  useElementProps<MtMapProps, Map>(props, map);
+
+  mapRef.current = props;
 
   useEffect(() => {
-    if (ref.current && !map) {
-      const map = new Map(ref.current, rest);
+    if (eleRef.current && !map) {
+      const map = new Map(eleRef.current, omit(props, ['onReady']));
 
-      setMap(map)
+      setMap(map);
+      mapRef.current?.onReady?.(map);
+
+      if (ref) {
+        (ref as any).current = map;
+      }
     }
 
     return () => {
       map?.remove();
     }
-  }, [ref, rest])
+  }, [eleRef])
+
 
   return (
-    <div ref={ref} style={{height: '100%', width: '100%'}}>
+    <div ref={eleRef} style={{height: '100%', width: '100%'}}>
       { map ? <MapContextProvider value={{map}}>{ children }</MapContextProvider> : null }
     </div>
   )
-}
+})
+
+MtMap.defaultProps = defaultProps;
+
+export { MtMap }
