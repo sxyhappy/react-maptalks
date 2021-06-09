@@ -1,4 +1,4 @@
-import { omit } from "../src/utils/omit";
+import { omit } from "../src";
 
 test('omit keys 为空', () => {
   expect(omit({a: 1, b: 2})).toStrictEqual({a: 1, b: 2})

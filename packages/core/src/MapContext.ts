@@ -8,7 +8,7 @@ export interface MapContextInterface {
 export const MapContext = createContext<MapContextInterface | null>(null)
 export const MapContextProvider = MapContext.Provider
 
-export const useMapContext = (): MapContextInterface => {
+export const useMap = (): MapContextInterface => {
   const context = useContext(MapContext)
 
   if (context == null) {

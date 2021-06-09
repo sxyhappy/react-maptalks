@@ -21,7 +21,17 @@ export const isEqual = (targetVal: any, originVal: any): boolean => {
   }
 
   if (typeof targetVal === 'object' && typeof originVal === 'object') {
-    return JSON.stringify(targetVal) === JSON.stringify(originVal);
+    return JSON.stringify(targetVal, (key, val) => {
+      if (typeof val === 'function') {
+        return val + '';
+      }
+      return val;
+    }) === JSON.stringify(originVal, (key, val) => {
+      if (typeof val === 'function') {
+        return val + '';
+      }
+      return val;
+    });
   }
 
   return targetVal === originVal;

@@ -1,4 +1,4 @@
-import { isEqual, compareObj } from "../src/utils/compareObj";
+import { isEqual, compareObj } from "../src";
 
 class TestA {
   width: number;
@@ -45,11 +45,21 @@ test('two class', () => {
   expect(isEqual(new TestA(1, 2), new TestB(3, 4))).toEqual(false)
 })
 
+test('tow object with function', () => {
+  expect(isEqual({a: () => console.log(1)}, {a: () => console.log(1)})).toEqual(true)
+})
+
+test('tow object with function not Equal', () => {
+  expect(isEqual({a: () => console.log(1)}, {a: () => console.log(2)})).toEqual(false)
+})
+
 test('change key', () => {
   expect(compareObj({a: 1, b: 2}, {a: 1, b: 3, c: 3})).toStrictEqual(['b', 'c'])
 })
 
-test('change key', () => {
+test('same object', () => {
   expect(compareObj({a: 1, b: 2}, {a: 1, b: 2})).toStrictEqual([])
 })
+
+
 

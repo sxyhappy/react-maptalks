@@ -1,4 +1,4 @@
-export type EventHandler = (eventsOn: string, handler: () => void, context: any) => void
+export type EventHandler = (eventsOn: string, handler: (...args: any) => void, context?: any) => void
 
 export interface MapEvent {
   on: EventHandler;

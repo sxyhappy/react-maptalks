@@ -1,13 +1,13 @@
 import { FC, useEffect } from "react";
 import { TileLayer, TileLayerOptions } from 'maptalks';
-import { useMapContext } from "@react-maptalks/core";
+import { useMap } from "@react-maptalks/core";
 
 export interface MtTileLayerOptions extends TileLayerOptions {
   id: string | number;
 }
 
 export const MtTileLayer: FC<MtTileLayerOptions> = (props) => {
-  const { map } = useMapContext()
+  const { map } = useMap()
 
   useEffect(() => {
     const tileLayer = new TileLayer(props.id, props);

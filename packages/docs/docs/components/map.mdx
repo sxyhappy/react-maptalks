@@ -9,16 +9,22 @@ sidebar_position: 1
 ```jsx live=true
 function MapExample() {
   const ref = useRef();
-  const [center, setCenter] = useState([-0.113049,51.49856]);
+  const [view, setView] = useState({ center: [-0.113049,51.49856], pitch: 0 });
 
   const handleMapReady = map => {
     console.log(map);
   }
 
+  const handleViewChange = view => {
+    setView(view.new)
+  }
+
   return (
     <div style={{height: 500}}>
-      <button onClick={() => setCenter([-0.12,51.49])}>设置中心</button>
-      <MtMap center={center} zoom={14} onReady={handleMapReady} ref={ref}>
+      <button onClick={() => setView({ ...view, center: [-0.12,51.49] })}>设置中心</button>
+      <button onClick={() => setView({ ...view, pitch: 50 })}>设置倾斜</button>
+      <div>{JSON.stringify(view)}</div>
+      <MtMap {...view} onReady={handleMapReady} ref={ref} onViewchange={handleViewChange}>
         <MtTileLayer
           id={"base"}
           urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
