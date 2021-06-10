@@ -1,7 +1,3 @@
-import { MtMap } from './MtMap';
-import { MtTileLayer } from "./layers/MtTileLayer";
-
-export {
-  MtMap,
-  MtTileLayer
-}
+export * from './MtMap';
+export * from './layers/MtTileLayer';
+export * from './layers/MtWMSLayer';

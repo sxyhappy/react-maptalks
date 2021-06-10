@@ -9,7 +9,6 @@ export function useElementProps<T extends Record<string, any>, P>(props?: T, ele
   useEffect(() => {
     if (element) {
       const differentKeys = compareObj(props || {}, prev || {});
-      console.log(differentKeys);
 
       differentKeys.forEach(key => {
         if ((element as any)[`set${capitalOrLowerLetter(key)}`] && (element as any)[`get${capitalOrLowerLetter(key)}`]) {

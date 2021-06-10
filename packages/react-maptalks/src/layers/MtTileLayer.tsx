@@ -1,13 +1,12 @@
 import { forwardRef, useEffect, useState } from "react";
 import { TileLayer, TileLayerOptions } from 'maptalks';
-import { omit, useMap, useParentRef, useElementVisible, useElementEvent, useElementProps } from "@react-maptalks/core";
+import { useMap, useParentRef, useElementVisible, useElementEvent, useElementProps } from "@react-maptalks/core";
 
 export interface MtTileLayerOptions extends TileLayerOptions {
-  id: string | number;
-  visible?: boolean;
+  id: string;
   onReady?: (tileLayer: TileLayer) => void;
-  clear?: Handler
-  idchange?: Handler
+  onClear?: Handler
+  onIdchange?: Handler
 }
 
 const defaultProps: Partial<MtTileLayerOptions> = {
@@ -16,18 +15,20 @@ const defaultProps: Partial<MtTileLayerOptions> = {
 
 const MtTileLayer = forwardRef<TileLayer, MtTileLayerOptions>((props, ref) => {
   const { map } = useMap();
-  const [tileLayer, setTileLayer] = useState<TileLayer>();
-  useParentRef(ref, tileLayer);
-  useElementVisible(props.visible as boolean, tileLayer);
-  useElementEvent(props, tileLayer);
+  const [layer, setLayer] = useState<TileLayer>();
+  useParentRef(ref, layer);
+  useElementVisible(props.visible, layer);
+  useElementEvent(props, layer);
   useElementProps(props)
 
   useEffect(() => {
     if (!props.id) throw new Error('must provide id for tileLayer');
-    const tileLayer = new TileLayer(props.id, omit(props, ['onReady', 'id']));
+
+    if (layer || map.getLayer(props.id)) return;
+    const tileLayer = new TileLayer(props.id, props);
 
     tileLayer.addTo(map);
-    setTileLayer(tileLayer);
+    setLayer(tileLayer);
     props?.onReady?.(tileLayer);
 
     return () => {

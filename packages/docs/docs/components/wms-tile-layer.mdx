@@ -1,0 +1,50 @@
+---
+sidebar_label: "WMSTileLayer"
+sidebar_position: 2
+---
+
+# MtWmsLayer
+
+## Example
+
+```jsx live=true
+function WmsExample() {
+  const ref = useRef();
+  const view = { center: [-0.113049,51.49856], pitch: 0, zoom: 1 };
+  const [wmsVisible, setWmsVisible] = useState(true);
+
+  useEffect(() => {
+    if (ref.current) {
+      console.log('ref current', ref.current)
+    }
+  }, [ref])
+
+  return (
+    <div style={{height: 400}}>
+      <button onClick={() => setWmsVisible(!wmsVisible)}>change visible</button>
+      <MtMap {...view}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+
+        <MtWMSTileLayer
+          visible={wmsVisible}
+          id={"wms"}
+          crs="EPSG:3857"
+          version="1.1.1"
+          layers="GDPS.ETA_NT"
+          format="image/png"
+          transparent={true}
+          urlTemplate="https://geo.weather.gc.ca/geomet"
+          uppercase={true}
+        />
+      </MtMap>
+    </div>
+  )
+}
+
+```
+

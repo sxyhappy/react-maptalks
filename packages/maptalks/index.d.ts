@@ -1,4 +1,5 @@
-export { Layer, LayerOptions } from "./Layer";
-export { Coordinate } from "./Coordinate";
-export { TileLayer, TileLayerOptions } from "./TileLayer";
-export { Map, MapOptions } from "./Map";
+export * from './Layer';
+export * from './Coordinate';
+export * from './TileLayer';
+export * from './Map';
+export * from './WMSTileLayer';
