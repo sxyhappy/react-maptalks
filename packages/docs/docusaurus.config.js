@@ -2,8 +2,8 @@
 module.exports = {
   title: 'React Maptalks',
   tagline: 'react-maptalks 是 maptalks 的 react 包装',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://sxyhappy.github.io',
+  baseUrl: '/react-maptalks/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -21,11 +21,10 @@ module.exports = {
         },
         {
           to: '/docs/components/map',
-          label: 'Components',
+          label: '组件',
           position: 'left',
           activeBasePath: 'docs/components',
         },
-        {to: '/example', label: 'Example', position: 'left'},
         {
           href: 'https://github.com/sxyhappy/react-maptalks',
           label: 'GitHub',

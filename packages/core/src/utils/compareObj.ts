@@ -1,6 +1,6 @@
 export function compareObj<T extends Record<string, unknown>>(target: T, origin: T): string[] {
   const changeKey: string[] = [];
-  const keys = [...new Set(Object.keys(target).concat(Object.keys(origin)))];
+  const keys = Array.from(new Set(Object.keys(target).concat(Object.keys(origin))));
 
   keys.forEach(key => {
     if (!isEqual(target[key], origin[key])) {

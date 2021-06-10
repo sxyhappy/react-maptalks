@@ -2,34 +2,26 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# 快速上手
 
-Let's discover **Docusaurus in less than 5 minutes**.
-
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[new.docusaurus.io](https://new.docusaurus.io)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
+## 安装
+```bash
+yarn add react-maptalks
 ```
 
-## Start your site
+## 使用
 
-Run the development server:
+```jsx
+import { MtMap, MtTileLayer } from 'react-maptalks';
+const view = { center: [-0.113049,51.49856], pitch: 0 };
 
-```shell
-cd my-website
+<MtMap {...view}>
+  <MtTileLayer
+    id={"base"}
+    urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+    subdomains={['a','b','c','d']}
+    attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+  />
+</MtMap>
 
-npx docusaurus start
 ```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
