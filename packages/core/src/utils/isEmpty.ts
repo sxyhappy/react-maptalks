@@ -1,5 +1,7 @@
 export const isEmpty = (data: any): boolean => {
-  if (!data && data !== false && data !== 0) return true;
+  if (data === false || data === 0) return false;
+
+  if (!data) return true;
 
   if (Array.isArray(data)) {
     return data.length === 0

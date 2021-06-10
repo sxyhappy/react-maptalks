@@ -1,5 +1,5 @@
 import { MtMap } from './MtMap';
-import { MtTileLayer } from "./MtTileLayer";
+import { MtTileLayer } from "./layers/MtTileLayer";
 
 export {
   MtMap,

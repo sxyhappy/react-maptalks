@@ -4,7 +4,6 @@ export interface EventMap<T extends Record<string, any>> {
   [key: string]: (...args: any) => void
 }
 
-// @ts-ignore
 export function getPropsEvent<T extends Record<string, any>>(props: T): EventMap<T> {
   const eventMap: EventMap<T> = {};
   const reg = /^on/;

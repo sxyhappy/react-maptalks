@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState, forwardRef } from "react";
 import { Map, MapOptions } from "maptalks";
-import { MapContextProvider, omit, useElementEvent, useElementProps } from "@react-maptalks/core";
-
-type Handler = (...args: any) => void;
+import { MapContextProvider, omit, useElementEvent, useElementProps, useParentRef } from "@react-maptalks/core";
 
 export interface MtMapProps extends MapOptions {
   onReady?: (map: Map) => void;
@@ -65,6 +63,7 @@ const MtMap = forwardRef<Map, MtMapProps>(({children, ...props}, ref) => {
   const [map, setMap] = useState<Map | undefined>();
   useElementProps(props, map);
   useElementEvent(props, map);
+  useParentRef(ref, map);
 
   mapRef.current = props;
 
@@ -74,16 +73,12 @@ const MtMap = forwardRef<Map, MtMapProps>(({children, ...props}, ref) => {
 
       setMap(map);
       mapRef.current?.onReady?.(map);
-
-      if (ref) {
-        (ref as any).current = map;
-      }
     }
 
     return () => {
       map?.remove();
     }
-  }, [eleRef])
+  }, [])
 
 
   return (

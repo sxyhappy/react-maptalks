@@ -4,9 +4,7 @@ import { getPropsEvent, isEmpty, isEqual } from './utils';
 import { usePrevious } from "./usePrevious";
 
 export function useElementEvent<T extends Record<string, any>, P>(props: T, element: P) {
-  const eventMap = useMemo(() => {
-    return getPropsEvent(props);
-  }, [props]);
+  const eventMap = useMemo(() => getPropsEvent(props), [props]);
   const prevEventMap = usePrevious(eventMap);
 
   useEffect(() => {
