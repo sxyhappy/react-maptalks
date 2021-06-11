@@ -5,4 +5,3 @@ export const capitalOrLowerLetter = (str: string, type: 'capital' | 'lower' = 'c
 
   return `${ type === 'capital' ? first.toUpperCase() : first.toLowerCase()}${rest}`
 }
-

@@ -8,17 +8,17 @@ export function useElementEvent<T extends Record<string, any>, P>(props: T, elem
   const prevEventMap = usePrevious(eventMap);
 
   useEffect(() => {
-    if (!isEmpty(eventMap) && element) {
-      for (let key in eventMap) {
-        (element as any).addEventListener(key, eventMap[key]);
-      }
+    if (isEmpty(eventMap) || !element) return;
+
+    for (let key in eventMap) {
+      (element as any).addEventListener(key, eventMap[key]);
     }
 
     return () => {
-      if (element) {
-        for (let key in eventMap) {
-          (element as any).removeEventListener(key, eventMap[key]);
-        }
+      if (!element) return;
+
+      for (let key in eventMap) {
+        (element as any).removeEventListener(key, eventMap[key]);
       }
     }
   }, [isEqual(eventMap, prevEventMap), element])

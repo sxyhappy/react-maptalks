@@ -1,8 +1,8 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from 'react';
 import { WMSTileLayerOptions, WMSTileLayer } from 'maptalks';
-import { useElementEvent, useElementProps, useElementVisible, useMap, useParentRef } from "@react-maptalks/core";
+import { useElementEvent, useElementProps, useElementVisible, useMap, useParentRef } from '@react-maptalks/core';
 
-export interface MtWMSLayerProps extends WMSTileLayerOptions {
+interface MtWMSLayerProps extends WMSTileLayerOptions {
   id: string;
   onReady: (wmsTileLayer: WMSTileLayer) => void;
   onClear: Handler;
@@ -10,7 +10,8 @@ export interface MtWMSLayerProps extends WMSTileLayerOptions {
 }
 
 const defaultProps: Partial<MtWMSLayerProps> = {
-  visible: true
+  visible: true,
+  opacity: 1
 }
 
 const MtWMSTileLayer = forwardRef<WMSTileLayer, MtWMSLayerProps>((props, ref) => {
@@ -40,4 +41,4 @@ const MtWMSTileLayer = forwardRef<WMSTileLayer, MtWMSLayerProps>((props, ref) =>
 
 MtWMSTileLayer.defaultProps = defaultProps;
 
-export { MtWMSTileLayer }
+export { MtWMSTileLayer, MtWMSLayerProps };

@@ -1,0 +1,77 @@
+---
+sidebar_label: "VectorLayer"
+sidebar_position: 3
+---
+
+# MtWmsLayer
+
+## Example
+
+```jsx live=true
+
+function WmsExample() {
+  const mapRef = useRef();
+  const view = { center: [-0.113049,51.49856], pitch: 0, zoom: 16 };
+  const [visible, setVisible] = useState(true);
+  const [geometries, setGeometries] = useState([]);
+
+  const vectorLayerReady = () => {
+    const center = mapRef.current.getCenter();
+    const marker1 = new maptalks.Marker(center.sub(0.020, 0), {
+      'symbol': {
+        'markerType': 'ellipse',
+        'markerFill': 'rgb(135,196,240)',
+        'markerFillOpacity': 1,
+        'markerLineColor': '#34495e',
+        'markerLineWidth': 3,
+        'markerLineOpacity': 1,
+        'markerLineDasharray':[],
+        'markerWidth': 40,
+        'markerHeight': 40,
+        'markerDx': 0,
+        'markerDy': 0,
+        'markerOpacity' : 1
+      }
+    });
+    const marker2 = new maptalks.Marker(center.sub(0.015, 0), {
+      'symbol': {
+        'markerType': 'cross',
+        'markerFill': 'rgb(135,196,240)',
+        'markerFillOpacity': 1,
+        'markerLineColor': '#34495e',
+        'markerLineWidth': 3,
+        'markerLineOpacity': 1,
+        'markerLineDasharray':[],
+        'markerWidth': 40,
+        'markerHeight': 40,
+        'markerDx': 0,
+        'markerDy': 0,
+        'markerOpacity' : 1
+      }
+    });
+
+    setGeometries([marker1, marker2]);
+  }
+
+  return (
+    <div style={{height: 400}}>
+      <button onClick={() => setVisible(!visible)}>change visible</button>
+      <MtMap {...view} ref={mapRef}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+        <MtVectorLayer
+          id={'vector'}
+          ref={vectorLayerReady}
+          geometries={geometries}
+          visible={visible}
+        />
+      </MtMap>
+    </div>
+  )
+}
+
+```

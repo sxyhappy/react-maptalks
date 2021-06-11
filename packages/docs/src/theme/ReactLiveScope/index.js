@@ -7,12 +7,15 @@
 
 import React from 'react';
 import * as reactMaptalks from 'react-maptalks';
+import * as maptalks from 'maptalks';
 
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
+  maptalks,
   ...React,
-  ...reactMaptalks
+  ...reactMaptalks,
+  ...maptalks
 };
 
 export default ReactLiveScope;

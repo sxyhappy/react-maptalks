@@ -1,3 +1,10 @@
+const jsonFunToString = (key: string, val: any) => {
+  if (typeof val === 'function') {
+    return val.toString();
+  }
+  return val;
+}
+
 export function compareObj<T extends Record<string, unknown>>(target: T, origin: T): string[] {
   const changeKey: string[] = [];
   const keys = Array.from(new Set(Object.keys(target).concat(Object.keys(origin))));
@@ -21,17 +28,7 @@ export const isEqual = (targetVal: any, originVal: any): boolean => {
   }
 
   if (typeof targetVal === 'object' && typeof originVal === 'object') {
-    return JSON.stringify(targetVal, (key, val) => {
-      if (typeof val === 'function') {
-        return val + '';
-      }
-      return val;
-    }) === JSON.stringify(originVal, (key, val) => {
-      if (typeof val === 'function') {
-        return val + '';
-      }
-      return val;
-    });
+    return JSON.stringify(targetVal, jsonFunToString) === JSON.stringify(originVal, jsonFunToString);
   }
 
   return targetVal === originVal;

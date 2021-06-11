@@ -1,8 +1,8 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from 'react';
 import { TileLayer, TileLayerOptions } from 'maptalks';
-import { useMap, useParentRef, useElementVisible, useElementEvent, useElementProps } from "@react-maptalks/core";
+import { useMap, useParentRef, useElementVisible, useElementEvent, useElementProps } from '@react-maptalks/core';
 
-export interface MtTileLayerOptions extends TileLayerOptions {
+interface MtTileLayerOptions extends TileLayerOptions {
   id: string;
   onReady?: (tileLayer: TileLayer) => void;
   onClear?: Handler
@@ -10,7 +10,8 @@ export interface MtTileLayerOptions extends TileLayerOptions {
 }
 
 const defaultProps: Partial<MtTileLayerOptions> = {
-  visible: true
+  visible: true,
+  opacity: 1,
 }
 
 const MtTileLayer = forwardRef<TileLayer, MtTileLayerOptions>((props, ref) => {
@@ -41,4 +42,4 @@ const MtTileLayer = forwardRef<TileLayer, MtTileLayerOptions>((props, ref) => {
 
 MtTileLayer.defaultProps = defaultProps;
 
-export { MtTileLayer }
+export { MtTileLayer, MtTileLayerOptions };

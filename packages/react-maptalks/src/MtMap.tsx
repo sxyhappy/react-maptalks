@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, forwardRef } from "react";
 import { Map, MapOptions } from "maptalks";
 import { MapContextProvider, omit, useElementEvent, useElementProps, useParentRef } from "@react-maptalks/core";
 
-export interface MtMapProps extends MapOptions {
+interface MtMapProps extends MapOptions {
   onReady?: (map: Map) => void;
   onSpatialreferencechange?: Handler;
   onBaselayerchangestart?: Handler;
@@ -90,4 +90,4 @@ const MtMap = forwardRef<Map, MtMapProps>(({children, ...props}, ref) => {
 
 MtMap.defaultProps = defaultProps;
 
-export { MtMap }
+export { MtMap, MtMapProps }
