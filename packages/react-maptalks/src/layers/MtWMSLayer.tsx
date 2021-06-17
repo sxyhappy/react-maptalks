@@ -35,11 +35,12 @@ const MtWMSTileLayer = forwardRef<WMSTileLayer, MtWMSLayerProps>((props, ref) =>
       wmsLayer.remove();
     }
 
-  }, [map])
+  }, [map]);
 
   return null;
-})
+});
 
 MtWMSTileLayer.defaultProps = defaultProps;
+MtWMSTileLayer.displayName = 'MtWMSTileLayer';
 
 export { MtWMSTileLayer, MtWMSLayerProps };

@@ -20,7 +20,7 @@ const MtTileLayer = forwardRef<TileLayer, MtTileLayerOptions>((props, ref) => {
   const [layer, setLayer] = useState<TileLayer>();
   useElementVisible(props.visible, layer);
   useElementEvent(props, layer);
-  useElementProps(props)
+  useElementProps(props);
 
   useEffect(() => {
     if (!props.id) throw new Error('must provide id for tileLayer');
@@ -36,11 +36,12 @@ const MtTileLayer = forwardRef<TileLayer, MtTileLayerOptions>((props, ref) => {
     return () => {
       tileLayer.remove();
     }
-  }, [map])
+  }, [map]);
 
-  return null
+  return null;
 });
 
 MtTileLayer.defaultProps = defaultProps;
+MtTileLayer.displayName = 'MtTileLayer';
 
 export { MtTileLayer, MtTileLayerOptions };

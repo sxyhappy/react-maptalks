@@ -13,6 +13,11 @@ module.exports = {
     navbar: {
       title: 'React Maptalks',
       items: [
+        {
+          href: 'https://github.com/sxyhappy/react-maptalks',
+          label: 'Github',
+          position: 'right',
+        }
       ],
     },
     footer: {

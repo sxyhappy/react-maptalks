@@ -4,8 +4,7 @@ import { Geometry } from "./Geometry";
 import { Extent } from "./Extent";
 
 export interface VectorLayerOptions extends OverlayLayerOptions {
-  id: string;
-  style?: Record<string, any>
+  style?: Record<string, unknown>
   debug?: boolean;
   enableSimplify?: boolean;
   cursor?: string;
@@ -22,5 +21,5 @@ export declare class VectorLayer extends OverlayLayer {
   constructor(id: string, geometries?: Geometry | Geometry[], options?: VectorLayerOptions);
 
   public identify(coordinate: Coordinate, options?: { tolerance?: number;  count?: number}): Geometry[];
-  public toJSON(options?: { geometries?: Record<string, any>, clipExtent?: Extent }): Record<string, any>;
+  public toJSON(options?: { geometries?: Record<string, unknown>, clipExtent?: Extent }): Record<string, unknown>;
 }

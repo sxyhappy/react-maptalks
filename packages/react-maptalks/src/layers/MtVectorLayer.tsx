@@ -55,8 +55,9 @@ const MtVectorLayer = forwardRef<VectorLayer, MtVectorLayerOptions>((props, ref)
       { props.children }
     </>
   )
-})
+});
 
 MtVectorLayer.defaultProps = defaultProps;
+MtVectorLayer.displayName = 'MtVectorLayer';
 
 export { MtVectorLayer, MtVectorLayerOptions };

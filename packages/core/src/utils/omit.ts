@@ -11,7 +11,7 @@ export function omit<T extends Record<string, any>> (obj: T, key?: string | stri
   const loop = (obj: Partial<T>, keys: string[]): Partial<T> => {
     if (keys.length === 0) return obj;
 
-    const { [keys.pop() as string]: omitted, ...rest } = obj
+    const { [keys.pop() as string]: _, ...rest } = obj
 
     return loop(rest as Partial<T>, keys)
   }

@@ -4,24 +4,22 @@ import { Extent } from "./Extent";
 import { GeometryCollection } from "./GeometryCollection";
 
 export interface fitViewOptions {
-  easing: string;
-  duration: number;
-  step: Function
+  easing?: string;
+  duration?: number;
+  step?: (...args: any) => void
 }
 
-export interface OverlayLayerOptions extends LayerOptions {
-
-}
+export type OverlayLayerOptions = LayerOptions
 
 export declare class OverlayLayer extends Layer {
   public getGeometryById(id: string | number): Geometry;
-  public getGeometries(filter?: Function, context?: Record<string, any>): Geometry[];
+  public getGeometries(filter?: (...args: any) => void, context?: Record<string, any>): Geometry[];
   public getFirstGeometry(): Geometry[];
   public getLastGeometry(): Geometry[];
   public getCount(): number;
   public getExtent(): Extent;
-  public forEach(fn: Function, context?: Record<string, any>): this;
-  public filter(fn: Function, context?: Record<string, any>): GeometryCollection;
+  public forEach(fn: (...args: any) => void, context?: Record<string, any>): this;
+  public filter(fn: (...args: any) => void, context?: Record<string, any>): GeometryCollection;
   public isEmpty(): boolean;
   public addGeometry(geometries: Geometry | Geometry[], fitView?: boolean | fitViewOptions): this;
   public getGeoMinZIndex(): number;

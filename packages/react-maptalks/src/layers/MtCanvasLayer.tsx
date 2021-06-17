@@ -16,7 +16,7 @@ const defaultProps: Partial<MtCanvasLayerProps> = {
 const MtCanvasLayer = forwardRef<CanvasLayer, MtCanvasLayerProps>((props, ref) => {
   const { map } = useMap();
   const [layer, setLayer] = useState<CanvasLayer>();
-  useElementVisible(props.visible, layer);
+  useElementVisible(props?.visible, layer);
   useElementEvent(props, layer);
   useElementProps(props);
 
@@ -34,11 +34,12 @@ const MtCanvasLayer = forwardRef<CanvasLayer, MtCanvasLayerProps>((props, ref) =
     return () => {
       canvasLayer.remove();
     }
-  }, [map])
+  }, [map]);
 
   return null
 });
 
 MtCanvasLayer.defaultProps = defaultProps;
+MtCanvasLayer.displayName = 'MtCanvasLayer';
 
-export { CanvasLayerOptions, MtCanvasLayer }
+export { CanvasLayerOptions, MtCanvasLayer };

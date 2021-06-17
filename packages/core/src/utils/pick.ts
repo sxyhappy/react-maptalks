@@ -4,7 +4,7 @@ export function pick<T extends Record<string, any>>(props: T, key: string | stri
   if (isEmpty(key)) return props;
 
   let keys: string[] = [];
-  let result: Partial<T> = {};
+  const result: Partial<T> = {};
 
   if (typeof key === 'string') {
     keys = [key]

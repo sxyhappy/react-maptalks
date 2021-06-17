@@ -1,0 +1,45 @@
+---
+sidebar_label: "ImageLayer"
+sidebar_position: 3
+---
+
+# ImageLayer
+
+## Example
+
+```jsx live=true
+function ImageExample() {
+  const mapRef = useRef();
+  const view = { center: [-0.09270712, 51.50615], pitch: 0, zoom: 14 };
+  const images = [
+    {
+      url : 'https://maptalks.org/examples/en/layer/imagelayer/raw/1.png',
+      extent: [-0.11854216406254636, 51.50043810048564, -0.09081885168461667, 51.50994770979011],
+      opacity : 1
+    },
+    {
+      url : 'https://maptalks.org/examples/en/layer/imagelayer/raw/2.png',
+      extent: [-0.10343596289067136, 51.50797115663946, -0.07897421667485105, 51.51876102463089],
+      opacity : 1
+    }
+  ]
+  const [visible, setVisible] = useState(true);
+
+  return (
+    <div style={{height: 400}}>
+      <button onClick={() => setVisible(!visible)}>change visible</button>
+      <MtMap {...view} ref={mapRef}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+
+        <MtImageLayer id={'image'} visible={visible} images={images} crossOrigin={'https://maptalks.org'} />
+      </MtMap>
+    </div>
+  )
+}
+
+```

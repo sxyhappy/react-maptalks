@@ -19,7 +19,7 @@ const MtParticleLayer = forwardRef<ParticleLayer, MtParticleLayerProps>((props, 
   const [layer, setLayer] = useState<ParticleLayer>();
   useElementVisible(props.visible, layer);
   useElementEvent(props, layer);
-  useElementProps(props)
+  useElementProps(props);
 
   useEffect(() => {
     if (!props.id) throw new Error('must provide id for particleLayer');
@@ -35,10 +35,12 @@ const MtParticleLayer = forwardRef<ParticleLayer, MtParticleLayerProps>((props, 
     return () => {
       particleLayer.remove();
     }
-  }, [map])
+  }, [map]);
+
   return null;
 });
 
 MtParticleLayer.defaultProps = defaultProps;
+MtParticleLayer.displayName = 'MtParticleLayer';
 
-export { MtParticleLayer, MtParticleLayerProps }
+export { MtParticleLayer, MtParticleLayerProps };

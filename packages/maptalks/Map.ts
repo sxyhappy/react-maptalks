@@ -125,7 +125,7 @@ export declare class Map implements MapEvent {
   public checkSize(): this;
   public locate(coordinate: Coordinate, dx: number, dy: number): Coordinate;
   public getMainPanel(): HTMLElement;
-  public getPanels(): object;
+  public getPanels(): Record<string, unknown>;
   public isRemoved(): boolean;
   public isMoving(): boolean;
   public getDevicePixelRatio(): number;

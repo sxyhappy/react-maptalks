@@ -1,11 +1,11 @@
 import { capitalOrLowerLetter } from "./capitalOrLowerLetter";
 
-export interface EventMap<T extends Record<string, any>> {
+export interface EventMap {
   [key: string]: (...args: any) => void
 }
 
-export function getPropsEvent<T extends Record<string, any>>(props: T): EventMap<T> {
-  const eventMap: EventMap<T> = {};
+export function getPropsEvent<T extends Record<string, any>>(props: T): EventMap {
+  const eventMap: EventMap = {};
   const reg = /^on/;
 
   Object.keys(props).forEach((key) => {

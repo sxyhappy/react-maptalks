@@ -1,9 +1,9 @@
 import { Layer, LayerOptions } from "./Layer";
 
 export interface CanvasLayerOptions extends LayerOptions {
-  doubleBuffer: boolean;
-  animation: boolean;
-  fps: number
+  doubleBuffer?: boolean;
+  animation?: boolean;
+  fps?: number
 }
 
 export declare class CanvasLayer extends Layer {

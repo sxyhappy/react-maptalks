@@ -3,6 +3,7 @@ export * from './Coordinate';
 export * from './Extent';
 export * from './Geometry';
 export * from './GeometryCollection';
+export * from './ImageLayer';
 export * from './Layer';
 export * from './Map';
 export * from './MapEvent';

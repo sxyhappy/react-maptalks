@@ -18,7 +18,7 @@ export function compareObj<T extends Record<string, unknown>>(target: T, origin:
   return changeKey;
 }
 
-export const isEqual = (targetVal: any, originVal: any): boolean => {
+export const isEqual = (targetVal: unknown, originVal: unknown): boolean => {
   if (typeof targetVal !== typeof originVal) return false;
   if (!targetVal && !originVal) return true;
   if ((!targetVal && targetVal) || (targetVal && !originVal)) return false;

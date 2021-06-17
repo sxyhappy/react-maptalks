@@ -1,4 +1,4 @@
-export const capitalOrLowerLetter = (str: string, type: 'capital' | 'lower' = 'capital') => {
+export const capitalOrLowerLetter = (str: string, type: 'capital' | 'lower' = 'capital'): string => {
   if (!str) return str;
   const first = str.charAt(0)
   const rest = str.slice(1);

@@ -79,7 +79,7 @@ const MtMap = forwardRef<Map, MtMapProps>(({children, ...props}, ref) => {
     return () => {
       map?.remove();
     }
-  }, [])
+  }, []);
 
 
   return (
@@ -90,5 +90,6 @@ const MtMap = forwardRef<Map, MtMapProps>(({children, ...props}, ref) => {
 })
 
 MtMap.defaultProps = defaultProps;
+MtMap.displayName = 'MtMap';
 
-export { MtMap, MtMapProps }
+export { MtMap, MtMapProps };
