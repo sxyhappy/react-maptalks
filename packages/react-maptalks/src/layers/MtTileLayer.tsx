@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { TileLayer, TileLayerOptions } from 'maptalks';
 import { useMap, useParentRef, useElementVisible, useElementEvent, useElementProps } from '@react-maptalks/core';
+import { Handler } from "../reactMaptalks";
 
 interface MtTileLayerOptions extends TileLayerOptions {
   id: string;

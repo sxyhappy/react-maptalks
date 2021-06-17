@@ -1,3 +1,4 @@
+export * from './CanvasLayer';
 export * from './Coordinate';
 export * from './Extent';
 export * from './Geometry';

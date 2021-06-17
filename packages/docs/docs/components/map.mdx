@@ -20,12 +20,6 @@ function MapExample() {
     setView(view.new)
   }
 
-  useEffect(() => {
-    if (ref.current) {
-      console.log('ref current', ref.current)
-    }
-  }, [ref])
-
   return (
     <div style={{height: 400}}>
       <button onClick={() => setView({ ...view, center: [-0.12,51.49] })}>设置中心</button>
@@ -34,7 +28,7 @@ function MapExample() {
       <MtMap
         {...view}
         onReady={handleMapReady}
-        ref={map => {console.log('map', map); ref.current = map}}
+        ref={map => {ref.current = map}}
         onViewchange={handleViewChange}
       >
         <MtTileLayer

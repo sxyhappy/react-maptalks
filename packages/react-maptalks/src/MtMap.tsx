@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, forwardRef } from "react";
 import { Map, MapOptions } from "maptalks";
 import { MapContextProvider, omit, useElementEvent, useElementProps, useParentRef } from "@react-maptalks/core";
+import { Handler } from "./reactMaptalks";
 
 interface MtMapProps extends MapOptions {
   onReady?: (map: Map) => void;

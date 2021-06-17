@@ -6,11 +6,11 @@
   "scripts": {
     "start:react-maptalks": "cd packages/react-maptalks && yarn run start",
     "start:react-core": "cd packages/core && yarn run start",
+    "start:doc": "cd packages/docs && yarn run start",
     "build:react-maptalks": "cd packages/react-maptalks && yarn run build",
     "build:react-core": "cd packages/core && yarn run build",
     "build:doc": "cd packages/docs && yarn run build",
     "build": "yarn run build:react-core && yarn run build:react-maptalks && yarn run build:doc",
-    "run:doc": "cd packages/docs && yarn run start",
     "deploy:doc": "deploy.sh",
     "eslint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
     "test": "jest"

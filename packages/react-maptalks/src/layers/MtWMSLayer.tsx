@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { WMSTileLayerOptions, WMSTileLayer } from 'maptalks';
 import { useElementEvent, useElementProps, useElementVisible, useMap, useParentRef } from '@react-maptalks/core';
+import { Handler } from "../reactMaptalks";
 
 interface MtWMSLayerProps extends WMSTileLayerOptions {
   id: string;

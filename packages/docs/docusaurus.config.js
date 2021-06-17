@@ -13,23 +13,6 @@ module.exports = {
     navbar: {
       title: 'React Maptalks',
       items: [
-        {
-          type: 'doc',
-          docId: 'intro',
-          position: 'left',
-          label: '快速上手',
-        },
-        {
-          to: '/docs/components/map',
-          label: '组件',
-          position: 'left',
-          activeBasePath: 'docs/components',
-        },
-        {
-          href: 'https://github.com/sxyhappy/react-maptalks',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     footer: {

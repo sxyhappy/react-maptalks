@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { Geometry, VectorLayer, VectorLayerOptions } from 'maptalks';
 import { useElementEvent, useElementProps, useElementVisible, useMap, useParentRef } from '@react-maptalks/core';
+import { Handler } from "../reactMaptalks";
 
 interface MtVectorLayerOptions extends VectorLayerOptions {
   id: string;

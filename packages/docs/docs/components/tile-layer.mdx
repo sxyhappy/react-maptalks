@@ -22,7 +22,7 @@ function TileExample() {
       <button onClick={() => setBoundaryVisible(!boundaryVisible)}>change visible</button>
       <MtMap {...view} onReady={handleTitleLayerReady}>
         <MtTileLayer
-          ref={instance => {console.log('ref', instance); ref.current = instance}}
+          ref={instance => ref.current = instance}
           id={"base"}
           urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
           subdomains={['a','b','c','d']}

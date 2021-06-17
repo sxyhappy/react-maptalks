@@ -18,7 +18,9 @@ export function useElementEvent<T extends Record<string, any>, P>(props: T, elem
       if (!element) return;
 
       for (let key in eventMap) {
-        (element as any).removeEventListener(key, eventMap[key]);
+        if (eventMap.hasOwnProperty(key)) {
+          (element as any).removeEventListener(key, eventMap[key]);
+        }
       }
     }
   }, [isEqual(eventMap, prevEventMap), element])

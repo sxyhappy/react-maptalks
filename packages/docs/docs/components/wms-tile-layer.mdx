@@ -9,15 +9,8 @@ sidebar_position: 2
 
 ```jsx live=true
 function WmsExample() {
-  const ref = useRef();
   const view = { center: [-0.113049,51.49856], pitch: 0, zoom: 1 };
   const [wmsVisible, setWmsVisible] = useState(true);
-
-  useEffect(() => {
-    if (ref.current) {
-      console.log('ref current', ref.current)
-    }
-  }, [ref])
 
   return (
     <div style={{height: 400}}>
