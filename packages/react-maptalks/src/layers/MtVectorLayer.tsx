@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { Geometry, VectorLayer, VectorLayerOptions } from 'maptalks';
-import { useElementEvent, useElementProps, useElementVisible, useMap, useParentRef } from '@react-maptalks/core';
-import { Handler } from "../reactMaptalks";
+import { bindParentRef, useElementEvent, useElementProps, useElementVisible, useMap } from '@react-maptalks/core';
+import { Handler } from '../reactMaptalks';
 
 interface MtVectorLayerOptions extends VectorLayerOptions {
   id: string;
@@ -23,7 +23,6 @@ const MtVectorLayer = forwardRef<VectorLayer, MtVectorLayerOptions>((props, ref)
   const [layer, setLayer] = useState<VectorLayer>();
   const { map } = useMap();
 
-  useParentRef(ref, layer);
   useElementEvent(props, layer);
   useElementVisible(props.visible, layer);
   useElementProps(props, layer);
@@ -34,6 +33,7 @@ const MtVectorLayer = forwardRef<VectorLayer, MtVectorLayerOptions>((props, ref)
     const vectorLayer = new VectorLayer(props.id, props.geometries, props);
     vectorLayer.addTo(map);
     setLayer(vectorLayer);
+    bindParentRef(ref, vectorLayer);
     props?.onReady?.(vectorLayer);
 
     return () => {

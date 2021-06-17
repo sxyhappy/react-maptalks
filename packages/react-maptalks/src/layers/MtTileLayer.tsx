@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { TileLayer, TileLayerOptions } from 'maptalks';
-import { useMap, useParentRef, useElementVisible, useElementEvent, useElementProps } from '@react-maptalks/core';
-import { Handler } from "../reactMaptalks";
+import { useMap, useElementVisible, useElementEvent, useElementProps, bindParentRef } from '@react-maptalks/core';
+import { Handler } from '../reactMaptalks';
 
 interface MtTileLayerOptions extends TileLayerOptions {
   id: string;
@@ -18,7 +18,6 @@ const defaultProps: Partial<MtTileLayerOptions> = {
 const MtTileLayer = forwardRef<TileLayer, MtTileLayerOptions>((props, ref) => {
   const { map } = useMap();
   const [layer, setLayer] = useState<TileLayer>();
-  useParentRef(ref, layer);
   useElementVisible(props.visible, layer);
   useElementEvent(props, layer);
   useElementProps(props)
@@ -31,6 +30,7 @@ const MtTileLayer = forwardRef<TileLayer, MtTileLayerOptions>((props, ref) => {
 
     tileLayer.addTo(map);
     setLayer(tileLayer);
+    bindParentRef(ref, tileLayer);
     props?.onReady?.(tileLayer);
 
     return () => {

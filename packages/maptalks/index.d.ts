@@ -7,6 +7,7 @@ export * from './Layer';
 export * from './Map';
 export * from './MapEvent';
 export * from './OverlayLayer';
+export * from './ParticleLayer';
 export * from './Point';
 export * from './PointExtent';
 export * from './Renderer';

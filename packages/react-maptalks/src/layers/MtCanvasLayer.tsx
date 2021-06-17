@@ -1,6 +1,6 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from 'react';
 import { CanvasLayer, CanvasLayerOptions } from 'maptalks';
-import { useElementEvent, useElementProps, useElementVisible, useMap, useParentRef } from "@react-maptalks/core";
+import { bindParentRef, useElementEvent, useElementProps, useElementVisible, useMap } from "@react-maptalks/core";
 import { Handler } from "../reactMaptalks";
 
 interface MtCanvasLayerProps extends CanvasLayerOptions {
@@ -16,7 +16,6 @@ const defaultProps: Partial<MtCanvasLayerProps> = {
 const MtCanvasLayer = forwardRef<CanvasLayer, MtCanvasLayerProps>((props, ref) => {
   const { map } = useMap();
   const [layer, setLayer] = useState<CanvasLayer>();
-  useParentRef(ref, layer);
   useElementVisible(props.visible, layer);
   useElementEvent(props, layer);
   useElementProps(props);
@@ -29,6 +28,7 @@ const MtCanvasLayer = forwardRef<CanvasLayer, MtCanvasLayerProps>((props, ref) =
 
     canvasLayer.addTo(map);
     setLayer(canvasLayer);
+    bindParentRef(ref, canvasLayer);
     props?.onReady?.(canvasLayer);
 
     return () => {

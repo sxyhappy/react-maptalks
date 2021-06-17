@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { WMSTileLayerOptions, WMSTileLayer } from 'maptalks';
-import { useElementEvent, useElementProps, useElementVisible, useMap, useParentRef } from '@react-maptalks/core';
-import { Handler } from "../reactMaptalks";
+import { useElementEvent, useElementProps, useElementVisible, useMap, bindParentRef } from '@react-maptalks/core';
+import { Handler } from '../reactMaptalks';
 
 interface MtWMSLayerProps extends WMSTileLayerOptions {
   id: string;
@@ -18,7 +18,6 @@ const defaultProps: Partial<MtWMSLayerProps> = {
 const MtWMSTileLayer = forwardRef<WMSTileLayer, MtWMSLayerProps>((props, ref) => {
   const [layer, setLayer] = useState<WMSTileLayer>();
   const { map } = useMap();
-  useParentRef(ref, layer);
   useElementProps(props, layer);
   useElementVisible(props.visible, layer);
   useElementEvent(props, layer);
@@ -29,6 +28,7 @@ const MtWMSTileLayer = forwardRef<WMSTileLayer, MtWMSLayerProps>((props, ref) =>
     const wmsLayer = new WMSTileLayer(props.id, props);
     wmsLayer.addTo(map);
     setLayer(wmsLayer);
+    bindParentRef(ref, layer);
     props?.onReady?.(wmsLayer);
 
     return () => {
