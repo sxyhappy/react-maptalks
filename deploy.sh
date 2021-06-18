@@ -4,6 +4,5 @@ export https_proxy=127.0.0.1:7890
 export proxy=127.0.0.1:7890
 
 npm run build
-cd ./packages/docs || exit
 
-npm deploy
+npm run deploy

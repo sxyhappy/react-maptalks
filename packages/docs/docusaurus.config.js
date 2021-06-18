@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'React Maptalks',
@@ -32,18 +34,17 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl:'https://github.com/sxyhappy/react-maptalks/tree/master/packages/docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-          ReactLiveScope: require.resolve('./src/theme/ReactLiveScope/index.js')
+          ReactLiveScope: require.resolve('./src/theme/ReactLiveScope/index.js'),
         },
       },
     ],
   ],
   themes: [
     '@docusaurus/theme-live-codeblock'
-  ]
+  ],
+  plugins: [path.resolve(__dirname, 'react-maptalks-plugin')]
 };
