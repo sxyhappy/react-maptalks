@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "react maptalks",
   "main": "./dist/react-maptalks.js",
-  "types": "./dist/types",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "start": "rollup -c -w",
     "build": "rollup -c"
@@ -14,12 +14,9 @@
   ],
   "author": "sxyhappy",
   "license": "MIT",
-  "dependencies": {
-    "@react-maptalks/core": "0.0.1"
-  },
   "peerDependencies": {
     "react": "^17.0.2",
     "maptalks": "^0.49.4",
-    "@types/maptalks": "0.0.1"
+    "@react-maptalks/core": "0.0.1"
   }
 }

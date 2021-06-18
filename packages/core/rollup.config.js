@@ -5,7 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 export default {
   input: 'src/index.ts',
   output: {
-    file: './dist/react-maptalks.js',
+    file: './dist/react-maptalks-core.js',
     format: 'cjs',
   },
   external: ['react', 'maptalks'],

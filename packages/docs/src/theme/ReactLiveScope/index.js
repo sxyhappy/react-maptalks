@@ -6,16 +6,20 @@
  */
 
 import React from 'react';
-import * as reactMaptalks from 'react-maptalks';
 import * as maptalks from 'maptalks';
+import * as reactMaptalks from 'react-maptalks';
+import * as reactMaptalksThree from '@react-maptalks/three';
+import * as THREE from 'three';
 
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
+  THREE,
   maptalks,
   ...React,
   ...reactMaptalks,
-  ...maptalks
+  ...maptalks,
+  ...reactMaptalksThree
 };
 
 export default ReactLiveScope;

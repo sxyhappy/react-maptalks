@@ -1,0 +1,76 @@
+---
+sidebar_label: "ThreeLayer"
+sidebar_position: 1
+---
+
+# ThreeLayer
+
+## Example
+
+```jsx live=true
+function ThreeExample() {
+  const mapRef = useRef();
+  const view = { center: [13.416935229170008, 52.529564137540376], pitch: 60, zoom: 14 };
+  const [visible, setVisible] = useState(true);
+  let features = [];
+
+  buildings.forEach(function (b) {
+    features = features.concat(b.features);
+  });
+
+  const handleLayerReady = layer => {
+    function getColor(level) {
+      if (level < 2) {
+          return 0x2685a7;
+      } else if (level >= 2 && level <= 5) {
+          return 0xff5733;
+      } else {
+          return 0xff2e00;
+      }
+   }
+
+    layer.prepareToDraw = function (gl, scene, camera) {
+      const me = this;
+      const light = new THREE.DirectionalLight(0xffffff);
+      light.position.set(0, -10, 10).normalize();
+      scene.add(light);
+
+      features.forEach(function (g) {
+        const heightPerLevel = 10;
+        const levels = g.properties.levels || 1;
+        const color = getColor(levels);
+        const m = new THREE.MeshPhongMaterial({color: color, opacity : 0.7});
+        const mesh = me.toExtrudeMesh(maptalks.GeoJSON.toGeometry(g), levels * heightPerLevel, m, levels * heightPerLevel);
+        if (Array.isArray(mesh)) {
+          scene.add.apply(scene, mesh);
+        } else {
+          scene.add(mesh);
+        }
+      });
+    };
+  }
+
+  return (
+    <div style={{height: 400}}>
+      <button onClick={() => setVisible(!visible)}>change visible</button>
+      <MtMap {...view} ref={mapRef}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+
+        <MtThreeLayer
+          id={'three'}
+          onReady={handleLayerReady}
+          forceRenderOnMoving={true}
+          forceRenderOnRotating={true}
+          forceRenderOnZooming={true}
+          visible={visible}
+        />
+      </MtMap>
+    </div>
+  )
+}
+```

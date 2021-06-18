@@ -1,0 +1,23 @@
+{
+  "name": "@react-maptalks/three",
+  "version": "0.0.1",
+  "description": "react maptalks-three plugin wrap",
+  "main": "./dist/react-maptalks-three.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "react",
+    "maptalks",
+    "threejs"
+  ],
+  "peerDependencies": {
+    "maptalks.three": "^0.15.4",
+    "react": "^17.0.2",
+    "maptalks": "^0.49.4",
+    "@react-maptalks/core": "0.0.1",
+    "react-maptalks": "0.0.1"
+  }
+}

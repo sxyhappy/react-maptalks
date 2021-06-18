@@ -7,8 +7,9 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'sxyhappy', // Usually your GitHub org/user name.
-  projectName: 'react-maptalks', // Usually your repo name.
+  organizationName: 'sxyhappy',
+  projectName: 'react-maptalks',
+  scripts: ['/static/building.js'],
   themeConfig: {
     navbar: {
       title: 'React Maptalks',

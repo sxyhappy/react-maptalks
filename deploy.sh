@@ -3,6 +3,7 @@ export USE_SSH=false
 export https_proxy=127.0.0.1:7890
 export proxy=127.0.0.1:7890
 
-cd ./packages/docs
+npm run build
+cd ./packages/docs || exit
 
-yarn deploy
+npm deploy
