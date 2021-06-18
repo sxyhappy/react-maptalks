@@ -1,5 +1,0 @@
-/*!
- * maptalks v0.49.4
- * LICENSE : BSD-3-Clause
- * (c) 2016-2021 maptalks.org
- */
