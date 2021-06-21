@@ -11,7 +11,6 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'sxyhappy',
   projectName: 'react-maptalks',
-  scripts: ['/static/building.js'],
   themeConfig: {
     navbar: {
       title: 'React Maptalks',
