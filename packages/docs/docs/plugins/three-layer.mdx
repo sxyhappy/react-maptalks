@@ -12,13 +12,14 @@ function ThreeExample() {
   const mapRef = useRef();
   const view = { center: [13.416935229170008, 52.529564137540376], pitch: 60, zoom: 14 };
   const [visible, setVisible] = useState(true);
-  let features = [];
-
-  buildings.forEach(function (b) {
-    features = features.concat(b.features);
-  });
 
   const handleLayerReady = layer => {
+    let features = [];
+
+    buildings.forEach(function (b) {
+      features = features.concat(b.features);
+    });
+
     function getColor(level) {
       if (level < 2) {
           return 0x2685a7;

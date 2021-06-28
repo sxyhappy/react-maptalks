@@ -1,6 +1,6 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { ImageLayerOptions, ImageLayer, ImageLayerImg } from 'maptalks';
-import { bindParentRef, useElementEvent, useElementProps, useElementVisible, useMap } from '@react-maptalks/core';
+import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
 
 interface MtImageLayerProps extends ImageLayerOptions {
   id: string;
@@ -13,14 +13,11 @@ const defaultProps: Partial<MtImageLayerProps> = {
   images: []
 }
 
-const MtImageLayer = forwardRef<ImageLayer, MtImageLayerProps>((props, ref) => {
+const MtImageLayerWrapper: FC<MtImageLayerProps> = (props) => {
   const { map } = useMap();
-  const [layer, setLayer] = useState<ImageLayer>();
-  useElementVisible(props.visible, layer);
-  useElementEvent(props, layer);
-  useElementProps(props);
+  const { layer, setLayer } = useLayer<ImageLayer>();
 
-  useEffect(() => {
+  useMount(() => {
     if (!props.id) throw new Error('must provide id for imageLayer');
 
     if (layer || map.getLayer(props.id)) return;
@@ -28,18 +25,15 @@ const MtImageLayer = forwardRef<ImageLayer, MtImageLayerProps>((props, ref) => {
 
     imageLayer.addTo(map);
     setLayer(imageLayer);
-    bindParentRef(ref, imageLayer);
     props?.onReady?.(imageLayer);
-
-    return () => {
-      imageLayer.remove();
-    }
-  }, [map]);
+  });
 
   return null;
-})
+}
 
-MtImageLayer.defaultProps = defaultProps;
-MtImageLayer.displayName = 'MtImageLayer';
+MtImageLayerWrapper.defaultProps = defaultProps;
+MtImageLayerWrapper.displayName = 'MtImageLayer';
 
-export { MtImageLayerProps, MtImageLayer };
+const MtImageLayer = createLayer(MtImageLayerWrapper);
+
+export { MtImageLayer, MtImageLayerProps };

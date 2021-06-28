@@ -1,7 +1,7 @@
-import { forwardRef, useEffect, useState } from "react";
-import { ThreeLayer } from "maptalks.three";
+import { FC } from 'react';
+import { ThreeLayer } from 'maptalks.three';
 import { CanvasLayerOptions } from 'maptalks';
-import { bindParentRef, useElementEvent, useElementProps, useElementVisible, useMap } from "@react-maptalks/core";
+import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
 
 interface MtThreeLayerProps extends CanvasLayerOptions {
   id: string;
@@ -13,14 +13,11 @@ const defaultProps: Partial<MtThreeLayerProps> = {
   visible: true,
 };
 
-const MtThreeLayer = forwardRef<ThreeLayer, MtThreeLayerProps>((props, ref) => {
+const MtThreeLayerWrapper: FC<MtThreeLayerProps> = (props) => {
   const { map } = useMap();
-  const [layer, setLayer] = useState<ThreeLayer>();
-  useElementVisible(props?.visible, layer);
-  useElementEvent(props, layer);
-  useElementProps(props);
+  const { layer, setLayer } = useLayer<ThreeLayer>();
 
-  useEffect(() => {
+  useMount(() => {
     if (!props.id) throw new Error('must provide id for ThreeLayer');
     if (layer || map.getLayer(props.id)) return;
 
@@ -28,19 +25,15 @@ const MtThreeLayer = forwardRef<ThreeLayer, MtThreeLayerProps>((props, ref) => {
     threeLayer.addTo(map);
 
     setLayer(threeLayer);
-    bindParentRef(ref, threeLayer);
     props?.onReady?.(threeLayer);
-
-    return () => {
-      threeLayer.remove();
-    }
-
-  }, []);
+  });
 
   return null;
-});
+};
 
-MtThreeLayer.defaultProps = defaultProps;
-MtThreeLayer.displayName = 'MtThreeLayer';
+MtThreeLayerWrapper.defaultProps = defaultProps;
+MtThreeLayerWrapper.displayName = 'MtThreeLayer';
+
+const MtThreeLayer = createLayer(MtThreeLayerWrapper);
 
 export { MtThreeLayer, MtThreeLayerProps };

@@ -1,4 +1,4 @@
-import { capitalOrLowerLetter } from "./capitalOrLowerLetter";
+import { capitalOrLowerLetter } from './capitalOrLowerLetter';
 
 export interface EventMap {
   [key: string]: (...args: any) => void

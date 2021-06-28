@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { usePrevious } from "./usePrevious";
-import { compareObj, capitalOrLowerLetter } from "./utils";
+import { usePrevious } from './usePrevious';
+import { compareObj, capitalOrLowerLetter } from '../utils';
 
 export function useElementProps<T extends Record<string, any>, P>(props?: T, element?: P): void {
   const prev = usePrevious<T>(props);

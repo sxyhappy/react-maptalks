@@ -1,4 +1,4 @@
-import { ForwardedRef } from "react";
+import { ForwardedRef } from 'react';
 
 export function bindParentRef<T>(ref: ForwardedRef<T>, element?: T): void {
   if (!element || !ref) return;

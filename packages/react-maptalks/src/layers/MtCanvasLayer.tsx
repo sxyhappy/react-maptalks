@@ -1,6 +1,7 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { CanvasLayer, CanvasLayerOptions } from 'maptalks';
-import { bindParentRef, useElementEvent, useElementProps, useElementVisible, useMap } from "@react-maptalks/core";
+import { createLayer, useLayer, useMap, useMount } from "@react-maptalks/core";
+
 import { Handler } from "../reactMaptalks";
 
 interface MtCanvasLayerProps extends CanvasLayerOptions {
@@ -13,14 +14,11 @@ const defaultProps: Partial<MtCanvasLayerProps> = {
   visible: true
 }
 
-const MtCanvasLayer = forwardRef<CanvasLayer, MtCanvasLayerProps>((props, ref) => {
+const MtCanvasLayerWrapper: FC<MtCanvasLayerProps> = (props) => {
   const { map } = useMap();
-  const [layer, setLayer] = useState<CanvasLayer>();
-  useElementVisible(props?.visible, layer);
-  useElementEvent(props, layer);
-  useElementProps(props);
+  const { layer, setLayer } = useLayer<CanvasLayer>();
 
-  useEffect(() => {
+  useMount(() => {
     if (!props.id) throw new Error('must provide id for canvasLayer');
 
     if (layer || map.getLayer(props.id)) return;
@@ -28,18 +26,15 @@ const MtCanvasLayer = forwardRef<CanvasLayer, MtCanvasLayerProps>((props, ref) =
 
     canvasLayer.addTo(map);
     setLayer(canvasLayer);
-    bindParentRef(ref, canvasLayer);
     props?.onReady?.(canvasLayer);
-
-    return () => {
-      canvasLayer.remove();
-    }
-  }, [map]);
+  });
 
   return null
-});
+};
 
-MtCanvasLayer.defaultProps = defaultProps;
-MtCanvasLayer.displayName = 'MtCanvasLayer';
+MtCanvasLayerWrapper.defaultProps = defaultProps;
+MtCanvasLayerWrapper.displayName = 'MtCanvasLayer';
 
-export { CanvasLayerOptions, MtCanvasLayer };
+const MtCanvasLayer = createLayer(MtCanvasLayerWrapper);
+
+export { MtCanvasLayer, CanvasLayerOptions };

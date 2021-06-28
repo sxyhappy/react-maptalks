@@ -1,6 +1,7 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { Geometry, VectorLayer, VectorLayerOptions } from 'maptalks';
-import { bindParentRef, useElementEvent, useElementProps, useElementVisible, useMap } from '@react-maptalks/core';
+import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
+
 import { Handler } from '../reactMaptalks';
 
 interface MtVectorLayerOptions extends VectorLayerOptions {
@@ -19,27 +20,19 @@ const defaultProps: Partial<MtVectorLayerOptions> = {
   opacity: 1,
 }
 
-const MtVectorLayer = forwardRef<VectorLayer, MtVectorLayerOptions>((props, ref) => {
-  const [layer, setLayer] = useState<VectorLayer>();
+const MtVectorLayerWrapper: FC<MtVectorLayerOptions> = (props) => {
   const { map } = useMap();
+  const { layer, setLayer } = useLayer<VectorLayer>();
 
-  useElementEvent(props, layer);
-  useElementVisible(props.visible, layer);
-  useElementProps(props, layer);
-
-  useEffect(() => {
+  useMount(() => {
     if (!props.id) throw new Error('must provide id for vectorLayer');
+    if (layer || map.getLayer(props.id)) return;
 
     const vectorLayer = new VectorLayer(props.id, props.geometries, props);
     vectorLayer.addTo(map);
     setLayer(vectorLayer);
-    bindParentRef(ref, vectorLayer);
     props?.onReady?.(vectorLayer);
-
-    return () => {
-      vectorLayer.remove();
-    }
-  }, [map]);
+  });
 
   useEffect(() => {
     if (!layer || !props.geometries) return;
@@ -52,12 +45,14 @@ const MtVectorLayer = forwardRef<VectorLayer, MtVectorLayerOptions>((props, ref)
 
   return (
     <>
-      { props.children }
+      { layer ? props.children : null }
     </>
   )
-});
+};
 
-MtVectorLayer.defaultProps = defaultProps;
-MtVectorLayer.displayName = 'MtVectorLayer';
+MtVectorLayerWrapper.defaultProps = defaultProps;
+MtVectorLayerWrapper.displayName = 'MtVectorLayer';
+
+const MtVectorLayer = createLayer(MtVectorLayerWrapper);
 
 export { MtVectorLayer, MtVectorLayerOptions };

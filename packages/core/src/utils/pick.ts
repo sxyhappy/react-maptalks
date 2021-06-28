@@ -1,4 +1,4 @@
-import { isEmpty } from "./isEmpty";
+import { isEmpty } from './isEmpty';
 
 export function pick<T extends Record<string, any>>(props: T, key: string | string[]): Partial<T> {
   if (isEmpty(key)) return props;

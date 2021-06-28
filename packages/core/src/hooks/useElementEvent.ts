@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from 'react';
 
-import { getPropsEvent, isEmpty, isEqual } from './utils';
-import { usePrevious } from "./usePrevious";
+import { getPropsEvent, isEmpty, isEqual } from '../utils';
+import { usePrevious } from './usePrevious';
 
 export function useElementEvent<T extends Record<string, any>, P>(props: T, element: P): void {
   const eventMap = useMemo(() => getPropsEvent(props), [props]);

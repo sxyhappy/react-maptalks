@@ -1,6 +1,7 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { WMSTileLayerOptions, WMSTileLayer } from 'maptalks';
-import { useElementEvent, useElementProps, useElementVisible, useMap, bindParentRef } from '@react-maptalks/core';
+import { useMap, useLayer, useMount, createLayer } from '@react-maptalks/core';
+
 import { Handler } from '../reactMaptalks';
 
 interface MtWMSLayerProps extends WMSTileLayerOptions {
@@ -15,32 +16,26 @@ const defaultProps: Partial<MtWMSLayerProps> = {
   opacity: 1
 }
 
-const MtWMSTileLayer = forwardRef<WMSTileLayer, MtWMSLayerProps>((props, ref) => {
-  const [layer, setLayer] = useState<WMSTileLayer>();
+const MtWMSTileLayerWrapper: FC<MtWMSLayerProps> = (props) => {
   const { map } = useMap();
-  useElementProps(props, layer);
-  useElementVisible(props.visible, layer);
-  useElementEvent(props, layer);
+  const { layer, setLayer } = useLayer<WMSTileLayer>();
 
-  useEffect(() => {
+  useMount(() => {
     if (!props.id) throw new Error('must provide id for wmsLayer');
 
+    if (layer || map.getLayer(props.id)) return;
     const wmsLayer = new WMSTileLayer(props.id, props);
     wmsLayer.addTo(map);
     setLayer(wmsLayer);
-    bindParentRef(ref, layer);
     props?.onReady?.(wmsLayer);
-
-    return () => {
-      wmsLayer.remove();
-    }
-
-  }, [map]);
+  });
 
   return null;
-});
+};
 
-MtWMSTileLayer.defaultProps = defaultProps;
-MtWMSTileLayer.displayName = 'MtWMSTileLayer';
+MtWMSTileLayerWrapper.defaultProps = defaultProps;
+MtWMSTileLayerWrapper.displayName = 'MtWMSTileLayer';
+
+const MtWMSTileLayer = createLayer(MtWMSTileLayerWrapper);
 
 export { MtWMSTileLayer, MtWMSLayerProps };

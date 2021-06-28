@@ -1,6 +1,6 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { ParticleLayer, ParticleLayerOptions } from 'maptalks';
-import { bindParentRef, useElementEvent, useElementProps, useElementVisible, useMap } from '@react-maptalks/core';
+import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
 
 import { Handler } from "../reactMaptalks";
 
@@ -14,14 +14,11 @@ const defaultProps: Partial<MtParticleLayerProps> = {
   visible: true
 }
 
-const MtParticleLayer = forwardRef<ParticleLayer, MtParticleLayerProps>((props, ref) => {
+const MtParticleLayerWrapper: FC<MtParticleLayerProps> = (props) => {
   const { map } = useMap();
-  const [layer, setLayer] = useState<ParticleLayer>();
-  useElementVisible(props.visible, layer);
-  useElementEvent(props, layer);
-  useElementProps(props);
+  const {layer, setLayer} = useLayer();
 
-  useEffect(() => {
+  useMount(() => {
     if (!props.id) throw new Error('must provide id for particleLayer');
 
     if (layer || map.getLayer(props.id)) return;
@@ -29,18 +26,15 @@ const MtParticleLayer = forwardRef<ParticleLayer, MtParticleLayerProps>((props, 
 
     particleLayer.addTo(map);
     setLayer(particleLayer);
-    bindParentRef(ref, particleLayer);
     props?.onReady?.(particleLayer);
-
-    return () => {
-      particleLayer.remove();
-    }
-  }, [map]);
+  });
 
   return null;
-});
+};
 
-MtParticleLayer.defaultProps = defaultProps;
-MtParticleLayer.displayName = 'MtParticleLayer';
+MtParticleLayerWrapper.defaultProps = defaultProps;
+MtParticleLayerWrapper.displayName = 'MtParticleLayer';
+
+const MtParticleLayer = createLayer(MtParticleLayerWrapper);
 
 export { MtParticleLayer, MtParticleLayerProps };
