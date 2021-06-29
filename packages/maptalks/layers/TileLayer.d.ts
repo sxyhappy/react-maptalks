@@ -1,5 +1,5 @@
 import { Layer, LayerOptions } from "./Layer";
-import { SpatialReference } from "./SpatialReference";
+import { SpatialReference } from "../SpatialReference";
 
 export interface TileLayerOptions extends LayerOptions {
   urlTemplate?: string;

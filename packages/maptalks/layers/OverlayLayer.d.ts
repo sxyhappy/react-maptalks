@@ -1,7 +1,7 @@
 import { Layer, LayerOptions } from "./Layer";
-import { Geometry } from "./Geometry";
-import { Extent } from "./Extent";
-import { GeometryCollection } from "./GeometryCollection";
+import { Geometry } from "../geometries/Geometry";
+import { Extent } from "../Extent";
+import { GeometryCollection } from "../GeometryCollection";
 
 export interface fitViewOptions {
   easing?: string;

@@ -1,5 +1,5 @@
 import { Layer, LayerOptions } from "./Layer";
-import { Renderer } from "./Renderer";
+import { Renderer } from "../Renderer";
 
 export interface ImageLayerImg {
   url: string;

@@ -1,12 +1,9 @@
 import { FC } from 'react';
 import { CanvasLayer, CanvasLayerOptions } from 'maptalks';
-import { createLayer, useLayer, useMap, useMount } from "@react-maptalks/core";
+import { createLayer, useLayer, useMap, useMount, Handler, Ready } from "@react-maptalks/core";
 
-import { Handler } from "../reactMaptalks";
-
-interface MtCanvasLayerProps extends CanvasLayerOptions {
+interface MtCanvasLayerProps extends CanvasLayerOptions, Ready<CanvasLayer> {
   id: string;
-  onReady?: (canvasLayer: CanvasLayer) => void,
   onIdchange?: Handler;
 }
 

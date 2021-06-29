@@ -1,13 +1,10 @@
 import { FC } from 'react';
 import { ParticleLayer, ParticleLayerOptions } from 'maptalks';
-import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
+import { createLayer, useLayer, useMap, useMount, Handler, Ready } from '@react-maptalks/core';
 
-import { Handler } from "../reactMaptalks";
-
-interface MtParticleLayerProps extends ParticleLayerOptions {
+interface MtParticleLayerProps extends ParticleLayerOptions, Ready<ParticleLayer> {
   id: string;
-  onReady?: (tileLayer: ParticleLayer) => void;
-  onIdchange?: Handler
+  onIdchange?: Handler;
 }
 
 const defaultProps: Partial<MtParticleLayerProps> = {
@@ -16,7 +13,7 @@ const defaultProps: Partial<MtParticleLayerProps> = {
 
 const MtParticleLayerWrapper: FC<MtParticleLayerProps> = (props) => {
   const { map } = useMap();
-  const {layer, setLayer} = useLayer();
+  const { layer, setLayer } = useLayer();
 
   useMount(() => {
     if (!props.id) throw new Error('must provide id for particleLayer');

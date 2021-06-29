@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState, forwardRef } from 'react';
 import { Map, MapOptions } from 'maptalks';
-import { MapContextProvider, omit, useElementEvent, useElementProps, bindParentRef } from '@react-maptalks/core';
-import { Handler } from './reactMaptalks';
+import { MapContextProvider, omit, useElementEvent, useElementProps, bindParentRef, Handler, Ready } from '@react-maptalks/core';
 
-interface MtMapProps extends MapOptions {
-  onReady?: (map: Map) => void;
+interface MtMapProps extends MapOptions, Ready<Map> {
   onSpatialreferencechange?: Handler;
   onBaselayerchangestart?: Handler;
   onBaselayerchangeend?: Handler;

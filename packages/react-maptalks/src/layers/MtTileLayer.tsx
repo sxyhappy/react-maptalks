@@ -1,12 +1,9 @@
 import { FC } from 'react';
 import { TileLayer, TileLayerOptions } from 'maptalks';
-import { useMap, createLayer, useLayer, useMount } from '@react-maptalks/core';
+import { useMap, createLayer, useLayer, useMount, Handler, Ready } from '@react-maptalks/core';
 
-import { Handler } from '../reactMaptalks';
-
-interface MtTileLayerOptions extends TileLayerOptions {
+interface MtTileLayerOptions extends TileLayerOptions, Ready<TileLayer> {
   id: string;
-  onReady?: (tileLayer: TileLayer) => void;
   onClear?: Handler
   onIdchange?: Handler
 }

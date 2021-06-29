@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
-import { Layer } from 'maptalks';
+import { MapElement } from "../core";
 
-export type Element = Layer;
-
-export function useElementVisible<T extends Element>(visible = true, element?: T): void {
+export function useElementVisible<T extends MapElement>(visible = true, element?: T): void {
   useEffect(() => {
     if (!element) return;
 

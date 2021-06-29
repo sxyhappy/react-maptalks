@@ -1,12 +1,9 @@
 import { FC } from 'react';
 import { WMSTileLayerOptions, WMSTileLayer } from 'maptalks';
-import { useMap, useLayer, useMount, createLayer } from '@react-maptalks/core';
+import { useMap, useLayer, useMount, createLayer, Handler, Ready } from '@react-maptalks/core';
 
-import { Handler } from '../reactMaptalks';
-
-interface MtWMSLayerProps extends WMSTileLayerOptions {
+interface MtWMSLayerProps extends WMSTileLayerOptions, Ready<WMSTileLayer> {
   id: string;
-  onReady: (wmsTileLayer: WMSTileLayer) => void;
   onClear: Handler;
   onIdchange: Handler;
 }

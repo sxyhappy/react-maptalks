@@ -1,13 +1,10 @@
 import { FC, useEffect } from 'react';
 import { Geometry, VectorLayer, VectorLayerOptions } from 'maptalks';
-import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
+import { createLayer, useLayer, useMap, useMount, Handler, Ready } from '@react-maptalks/core';
 
-import { Handler } from '../reactMaptalks';
-
-interface MtVectorLayerOptions extends VectorLayerOptions {
+interface MtVectorLayerOptions extends VectorLayerOptions, Ready<VectorLayer> {
   id: string;
   geometries?: Geometry | Geometry[];
-  onReady?: (vectorLayer: VectorLayer) => void;
   onSetstyle?: Handler;
   onRemovestyle?: Handler;
   onAddgeo?: Handler;

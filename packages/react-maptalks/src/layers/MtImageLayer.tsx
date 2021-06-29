@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { ImageLayerOptions, ImageLayer, ImageLayerImg } from 'maptalks';
-import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
+import { createLayer, useLayer, useMap, useMount, Ready } from '@react-maptalks/core';
 
-interface MtImageLayerProps extends ImageLayerOptions {
+interface MtImageLayerProps extends ImageLayerOptions, Ready<ImageLayer> {
   id: string;
   images: ImageLayerImg[];
-  onReady?: (imageLayer: ImageLayer) => void;
 }
 
 const defaultProps: Partial<MtImageLayerProps> = {

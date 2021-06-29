@@ -1,6 +1,6 @@
-import { Map } from './Map';
-import { EventHandler, MapEvent } from "./MapEvent";
-import { Geometry } from "./Geometry";
+import { Map } from '../Map';
+import { EventHandler, MapEvent } from "../MapEvent";
+import { Geometry } from "../geometries/Geometry";
 
 export interface LayerOptions {
   attribution?: string;

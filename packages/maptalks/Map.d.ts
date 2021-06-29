@@ -1,12 +1,12 @@
 import { Coordinate } from './Coordinate'
-import { Layer } from "./Layer";
-import { SpatialReference } from "./SpatialReference";
-import { Extent } from "./Extent";
-import { Renderer } from "./Renderer";
-import { PointExtent } from "./PointExtent";
-import { Point } from "./Point";
-import { Size } from "./Size";
-import { EventHandler, MapEvent } from "./MapEvent";
+import { Layer } from './layers';
+import { SpatialReference } from './SpatialReference';
+import { Extent } from './Extent';
+import { Renderer } from './Renderer';
+import { PointExtent } from './PointExtent';
+import { Point } from './Point';
+import { Size } from './Size';
+import { EventHandler, MapEvent } from './MapEvent';
 
 export interface View {
   zoom: number;
