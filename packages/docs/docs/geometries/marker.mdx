@@ -1,34 +1,27 @@
 ---
-sidebar_label: "Geometry"
-sidebar_position: 1
+sidebar_label: "Marker"
+sidebar_position: 2
 ---
 
-# Geometry
+# Marker
 
 ## Example
 
 ```jsx live=true
-function GeometryExample() {
+function MarkerExample() {
   const view = { center: [-0.113049,51.49856], pitch: 0, zoom: 14 };
   const [visible, setVisible] = useState(true);
-  const profile = {
-    "feature": {
-      "type": "Feature",
-      "id" : "point1",
-      "geometry": {"type": "Point", "coordinates": [-0.113049,51.49856]},
-      "properties": {"prop0": "value0"}
-    },
-    "options":{
-      "draggable" : true
-    },
-    "symbol":{
-      "markerFile"  : "https://maptalks.org/examples/en/style/image-marker/raw/1.png",
+  const markerConfig = {
+    'symbol' : {
+      'markerFile'   : 'https://maptalks.org/examples/en/style/image-marker/raw/3.png',
       'markerWidth'  : 28,
       'markerHeight' : 40,
       'markerDx'     : 0,
       'markerDy'     : 0,
       'markerOpacity': 1
-    }
+    },
+    coordinate: [-0.113049,51.49856],
+    cursor: 'Pointer'
   }
 
   const handleClick = (e) => {
@@ -47,7 +40,9 @@ function GeometryExample() {
         />
 
         <MtVectorLayer id={'vector'}>
-          <MtGeometry profile={profile} visible={visible} onClick={handleClick} />
+          <MtMarker {...markerConfig} visible={visible}>
+            <MtInfoWindow title={'infoTitle'}><>content</></MtInfoWindow>
+          </MtMarker>
         </MtVectorLayer>
       </MtMap>
     </div>

@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import { MapElement } from "../core";
+import { MapElement } from '../core';
 
-export function useElementVisible<T extends MapElement>(visible = true, element?: T): void {
+export function useElementVisible<T extends MapElement>(visible: boolean, element?: T): void {
   useEffect(() => {
     if (!element) return;
-
-    if (visible) {
+    if (visible && !element.isVisible()) {
       element?.show?.();
-    } else {
+    }
+
+    if (!visible && element.isVisible()) {
       element?.hide?.();
     }
   }, [visible, element])

@@ -18,14 +18,14 @@ export interface LayerContextProps<T extends Layer> {
   setLayer: Dispatch<SetStateAction<T | undefined>>
 }
 
-export const elementContext = createContext<LayerContextProps<any> | null>(null);
-const LayerProvider = elementContext.Provider;
+export const layerContext = createContext<LayerContextProps<any> | null>(null);
+const LayerProvider = layerContext.Provider;
 
 export function useLayer<T extends Layer>(): LayerContextProps<T> {
-  const context = useContext<LayerContextProps<T> | null>(elementContext);
+  const context = useContext<LayerContextProps<T> | null>(layerContext);
 
   if (!context) {
-    throw new Error('no element context provide')
+    throw new Error('no layer context provide')
   }
 
   return context;

@@ -5,8 +5,25 @@ sidebar_position: 1
 # 快速上手
 
 ## 安装
+### main package install
+
 ```bash
-yarn add react-maptalks
+# yarn
+yarn add maptalks
+yarn add react-maptalks @react-maptalks/core
+# yarn with ts
+yarn add @types/maptalks -D
+```
+
+### plugins install
+
+#### plugin @react-maptalks/three install
+```bash
+# yarn
+yarn add three maptalks.three
+yarn add @react-maptalks/three
+# yarn with ts
+yarn add @types/three -D
 ```
 
 ## 使用

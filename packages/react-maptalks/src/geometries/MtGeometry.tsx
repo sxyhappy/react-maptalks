@@ -25,6 +25,7 @@ const MtGeometryWrapper: FC<MtGeometryProps> = (props) => {
 
     setGeometry(geom);
     geom.addTo(layer);
+    props?.onReady?.(geom);
   })
 
   return (

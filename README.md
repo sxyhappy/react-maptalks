@@ -5,15 +5,9 @@
 ### main package install
 
 ```bash
-# npm
-npm install maptalks -S
-npm install react-maptalks @react-maptalks/core -S
-# npm with ts
-npm install @types/maptalks -D
-
 # yarn
-yarn add maptalks -S
-yarn add react-maptalks @react-maptalks/core -S
+yarn add maptalks
+yarn add react-maptalks @react-maptalks/core
 # yarn with ts
 yarn add @types/maptalks -D
 ```
@@ -22,16 +16,10 @@ yarn add @types/maptalks -D
 
 #### plugin @react-maptalks/three install
 ```bash
-# npm
-npm install three maptalks.three -S
-npm install @react-maptalks/three -S
-# npm with ts
-npm install @types/three -D
-
 # yarn
 yarn add three maptalks.three
 yarn add @react-maptalks/three
-# npm with ts
+# yarn with ts
 yarn add @types/three -D
 ```
 
