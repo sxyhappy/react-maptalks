@@ -1,4 +1,5 @@
 export * from './layers';
+export * as control from './control';
 export * as ui from './ui';
 export * from './geometries';
 export * from './Coordinate';

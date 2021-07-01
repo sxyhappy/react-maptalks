@@ -1,9 +1,3 @@
-import { UIComponent, UIComponentOptions } from './UIComponent';
-import { InfoWindow, InfoWindowOptions } from './InfoWindow';
+export { UIComponent, UIComponentOptions } from './UIComponent';
+export { InfoWindow, InfoWindowOptions } from './InfoWindow';
 
-export {
-  UIComponent,
-  UIComponentOptions,
-  InfoWindow,
-  InfoWindowOptions
-}

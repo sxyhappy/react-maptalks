@@ -1,0 +1,35 @@
+---
+sidebar_label: "Zoom"
+sidebar_position: 1
+---
+
+# Zoom
+
+## Example
+
+```jsx live=true
+function ZoomExample() {
+  const view = {
+    center: [-0.113049,51.49856],
+    pitch: 0,
+    zoom: 14,
+    baseLayer: new maptalks.TileLayer('base', {
+      urlTemplate: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+      subdomains: ['a','b','c','d'],
+      attribution: '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'
+    })
+  };
+  const [ visible, setVisible ] = useState(true);
+
+  return (
+    <div style={{height: 400}}>
+      <button onClick={() => setVisible(!visible)}>change visible</button>
+      <MtMap {...view}>
+        <MtZoom  />
+        <MtZoom position={'top-right'} visible={visible} zoomLevel={false} />
+      </MtMap>
+    </div>
+  )
+}
+
+```

@@ -15,7 +15,7 @@ export function useBindElement<T extends MapElement>(props: MapElementOptions, r
   useElementProps(props);
 
   useEffect(() => {
-    if (element !== preElement) {
+    if (element && element !== preElement) {
       bindParentRef(ref, element)
     }
   }, [element, ref]);

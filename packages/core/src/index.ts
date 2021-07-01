@@ -5,3 +5,4 @@ export * from './utils';
 export * from './createLayer';
 export * from './createGeometry';
 export * from './createUIComponent';
+export * from './createControl';

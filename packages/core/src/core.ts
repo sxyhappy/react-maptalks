@@ -1,8 +1,8 @@
-import { Geometry, GeometryOptions, Layer, LayerOptions, ui } from 'maptalks';
+import { Geometry, GeometryOptions, Layer, LayerOptions, ui, control } from 'maptalks';
 
-export type MapElement = Layer | Geometry | ui.UIComponent;
+export type MapElement = Layer | Geometry | ui.UIComponent | control.Control;
 
-export type MapElementOptions = LayerOptions | GeometryOptions | UIComponentProps;
+export type MapElementOptions = LayerOptions | GeometryOptions | UIComponentProps | ControlProps;
 
 export type Handler = (...args: any) => void;
 
@@ -50,5 +50,12 @@ export interface GeometryProps {
 
 export interface UIComponentProps extends ui.UIComponentOptions {
   visible?: boolean;
+}
+
+export interface ControlProps {
+  visible?: boolean;
+  onAdd?: Handler
+  onRemove?: Handler
+  onPositionchange?: Handler
 }
 
