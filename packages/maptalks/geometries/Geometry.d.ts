@@ -1,4 +1,4 @@
-import { EventHandler, MapEvent } from '../MapEvent';
+import { MapEvent } from '../MapEvent';
 import { Coordinate } from '../Coordinate';
 import { Layer } from '../layers';
 import { Map } from '../Map';
@@ -20,7 +20,7 @@ export interface GeometryOptions {
   zIndex?: number;
 }
 
-export declare class Geometry implements MapEvent {
+export declare abstract class Geometry extends MapEvent {
   static fromJSON(json: Record<string, any>): Geometry;
   public getFirstCoordinate(): Coordinate;
   public getLastCoordinate(): Coordinate;
@@ -78,13 +78,4 @@ export declare class Geometry implements MapEvent {
   public openInfoWindow(coordinate?: Coordinate): this;
   public closeInfoWindow(): this;
   public removeInfoWindow(): this;
-
-  on: EventHandler;
-  addEventListener: EventHandler;
-  once: EventHandler;
-  off: EventHandler;
-  removeEventListener: EventHandler;
-  listens: EventHandler;
-  copyEventListeners: (target: Record<string, unknown>) => this;
-  fire: (eventType: string, param: any) => this;
 }

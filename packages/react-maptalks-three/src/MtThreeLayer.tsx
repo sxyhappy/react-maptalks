@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { ThreeLayer } from 'maptalks.three';
 import { CanvasLayerOptions } from 'maptalks';
-import { createLayer, useLayer, useMap, useMount } from '@react-maptalks/core';
+import { createLayer, Ready, useLayer, useMap, useMount } from '@react-maptalks/core';
 
-interface MtThreeLayerProps extends CanvasLayerOptions {
+interface MtThreeLayerProps extends CanvasLayerOptions, Ready<ThreeLayer> {
   id: string;
-  onReady?: (layer: ThreeLayer) => void;
   prepareToDraw(...args: any[]): void;
 }
 

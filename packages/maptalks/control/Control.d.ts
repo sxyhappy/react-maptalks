@@ -3,7 +3,7 @@ import { Point } from '../Point';
 
 export type ControlPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | Record<string, any>;
 
-export declare class Control {
+export declare abstract class Control {
   public addTo(map: Map): this;
   public update(): this;
   public getMap(): Map;

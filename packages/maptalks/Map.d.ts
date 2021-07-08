@@ -6,7 +6,7 @@ import { Renderer } from './Renderer';
 import { PointExtent } from './PointExtent';
 import { Point } from './Point';
 import { Size } from './Size';
-import { EventHandler, MapEvent } from './MapEvent';
+import { MapEvent } from './MapEvent';
 
 export interface View {
   zoom: number;
@@ -69,7 +69,7 @@ export interface MapOptions {
   devicePixelRatio?: number;
 }
 
-export declare class Map implements MapEvent {
+export declare class Map extends MapEvent {
   constructor(el: string | HTMLElement, options?: MapOptions);
 
   public remove(): this;
@@ -180,13 +180,4 @@ export declare class Map implements MapEvent {
   // public callInitHooks();
   // public setOptions();
   // public config();
-
-  on: EventHandler;
-  addEventListener: EventHandler;
-  once: EventHandler;
-  off: EventHandler;
-  removeEventListener: EventHandler;
-  listens: EventHandler;
-  copyEventListeners: (target: Record<string, unknown>) => this;
-  fire: (eventType: string, param: any) => this;
 }

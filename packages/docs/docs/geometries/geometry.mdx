@@ -36,9 +36,9 @@ function GeometryExample() {
   }
 
   return (
-    <div style={{height: 400}}>
+    <>
       <button onClick={() => setVisible(!visible)}>change visible</button>
-      <MtMap {...view}>
+      <MtMap {...view} style={{height: 400}}>
         <MtTileLayer
           id={"base"}
           urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
@@ -50,7 +50,7 @@ function GeometryExample() {
           <MtGeometry profile={profile} visible={visible} onClick={handleClick} />
         </MtVectorLayer>
       </MtMap>
-    </div>
+    </>
   )
 }
 

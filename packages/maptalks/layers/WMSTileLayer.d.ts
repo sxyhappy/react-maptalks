@@ -11,5 +11,5 @@ export interface WMSTileLayerOptions extends TileLayerOptions {
 }
 
 export declare class WMSTileLayer extends TileLayer {
-  constructor(id: string, options: WMSTileLayerOptions);
+  constructor(id: string, options?: WMSTileLayerOptions);
 }

@@ -1,0 +1,44 @@
+---
+sidebar_label: "Circle"
+sidebar_position: 3
+---
+
+# Circle
+
+## Example
+
+```jsx live=true
+function CircleExample() {
+  const view = { center: [-0.113049,51.49856], pitch: 0, zoom: 14 };
+  const [visible, setVisible] = useState(true);
+  const circleConfig = {
+    symbol: {
+      lineColor: '#34495e',
+      lineWidth: 2,
+      polygonFill: '#1bbc9b',
+      polygonOpacity: 0.4
+    },
+    center: [-0.113049,51.49856],
+    radius: 200
+  }
+
+  return (
+    <>
+      <button onClick={() => setVisible(!visible)}>change visible</button>
+      <MtMap {...view} style={{height: 400}}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+
+        <MtVectorLayer id={'vector'}>
+          <MtCircle {...circleConfig} visible={visible} />
+        </MtVectorLayer>
+      </MtMap>
+    </>
+  )
+}
+
+```

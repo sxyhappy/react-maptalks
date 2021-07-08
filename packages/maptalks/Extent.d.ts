@@ -1,6 +1,6 @@
-import { Coordinate } from "./Coordinate";
-import { Point } from "./Point";
-import { Size } from "./Size";
+import { Coordinate } from './Coordinate';
+import { Point } from './Point';
+import { Size } from './Size';
 
 export declare class Extent {
   constructor(xmin: number, ymin: number, xmax: number, ymax: number);

@@ -22,13 +22,13 @@ function ZoomExample() {
   const [ visible, setVisible ] = useState(true);
 
   return (
-    <div style={{height: 400}}>
+    <>
       <button onClick={() => setVisible(!visible)}>change visible</button>
-      <MtMap {...view}>
+      <MtMap {...view} style={{height: 400}}>
         <MtZoom  />
         <MtZoom position={'top-right'} visible={visible} zoomLevel={false} />
       </MtMap>
-    </div>
+    </>
   )
 }
 

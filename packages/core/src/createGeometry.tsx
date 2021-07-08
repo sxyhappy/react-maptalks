@@ -34,7 +34,6 @@ export function useGeometry<T extends Geometry>(): GeometryContextProps<T> {
 
 export function createGeometry<P extends GeometryOptions & GeometryProps, T extends Geometry>(Component: FC<P>): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> {
   const Wrapper = forwardRef<T, P>((props, ref) => {
-    console.log(props)
     const [geometry, setGeometry] = useBindElement<T>(props, ref);
     useGeometryProps(props, geometry);
 

@@ -7,7 +7,7 @@ export interface CanvasLayerOptions extends LayerOptions {
 }
 
 export declare class CanvasLayer extends Layer {
-  constructor(id: string, options: CanvasLayerOptions);
+  constructor(id: string, options?: CanvasLayerOptions);
 
   public prepareToDraw(context: CanvasRenderingContext2D): Record<any, any>[];
   public draw(context: CanvasRenderingContext2D): void;

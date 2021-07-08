@@ -26,9 +26,9 @@ function ImageExample() {
   const [visible, setVisible] = useState(true);
 
   return (
-    <div style={{height: 400}}>
+    <>
       <button onClick={() => setVisible(!visible)}>change visible</button>
-      <MtMap {...view} ref={mapRef}>
+      <MtMap {...view} ref={mapRef} style={{height: 400}}>
         <MtTileLayer
           id={"base"}
           urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
@@ -38,7 +38,7 @@ function ImageExample() {
 
         <MtImageLayer id={'image'} visible={visible} images={images} crossOrigin={'https://maptalks.org'} />
       </MtMap>
-    </div>
+    </>
   )
 }
 

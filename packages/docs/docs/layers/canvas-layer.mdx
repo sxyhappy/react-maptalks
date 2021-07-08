@@ -34,9 +34,9 @@ function CanvasExample() {
   }
 
   return (
-    <div style={{height: 400}}>
+    <>
       <button onClick={() => setVisible(!visible)}>change visible</button>
-      <MtMap {...view} ref={mapRef}>
+      <MtMap {...view} ref={mapRef} style={{height: 400}}>
         <MtTileLayer
           id={"base"}
           urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
@@ -46,7 +46,7 @@ function CanvasExample() {
 
         <MtCanvasLayer onReady={handleLayerReady} id={'canvas'} visible={visible} />
       </MtMap>
-    </div>
+    </>
   )
 }
 

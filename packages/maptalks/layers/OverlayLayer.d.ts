@@ -1,5 +1,5 @@
 import { Layer, LayerOptions } from "./Layer";
-import { Geometry } from "../geometries/Geometry";
+import { Geometry } from "../geometries";
 import { Extent } from "../Extent";
 import { GeometryCollection } from "../GeometryCollection";
 
@@ -11,7 +11,7 @@ export interface fitViewOptions {
 
 export type OverlayLayerOptions = LayerOptions
 
-export declare class OverlayLayer extends Layer {
+export declare abstract class OverlayLayer extends Layer {
   public getGeometryById(id: string | number): Geometry;
   public getGeometries(filter?: (...args: any) => void, context?: Record<string, any>): Geometry[];
   public getFirstGeometry(): Geometry[];

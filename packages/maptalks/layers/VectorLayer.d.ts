@@ -1,6 +1,6 @@
 import { OverlayLayer, OverlayLayerOptions } from "./OverlayLayer";
 import { Coordinate } from "../Coordinate";
-import { Geometry } from "../geometries/Geometry";
+import { Geometry } from "../geometries";
 import { Extent } from "../Extent";
 
 export interface VectorLayerOptions extends OverlayLayerOptions {

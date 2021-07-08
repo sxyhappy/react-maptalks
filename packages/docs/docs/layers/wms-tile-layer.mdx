@@ -13,9 +13,9 @@ function WmsExample() {
   const [wmsVisible, setWmsVisible] = useState(true);
 
   return (
-    <div style={{height: 400}}>
+    <>
       <button onClick={() => setWmsVisible(!wmsVisible)}>change visible</button>
-      <MtMap {...view}>
+      <MtMap {...view} style={{height: 400}}>
         <MtTileLayer
           id={"base"}
           urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
@@ -35,7 +35,7 @@ function WmsExample() {
           uppercase={true}
         />
       </MtMap>
-    </div>
+    </>
   )
 }
 

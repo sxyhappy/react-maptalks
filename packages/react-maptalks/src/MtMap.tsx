@@ -3,6 +3,8 @@ import { Map, MapOptions } from 'maptalks';
 import { MapContextProvider, omit, useElementEvent, useElementProps, bindParentRef, Handler, Ready } from '@react-maptalks/core';
 
 interface MtMapProps extends MapOptions, Ready<Map> {
+  className?: string;
+  style?: StyleSheet;
   onSpatialreferencechange?: Handler;
   onBaselayerchangestart?: Handler;
   onBaselayerchangeend?: Handler;
@@ -81,7 +83,7 @@ const MtMap = forwardRef<Map, MtMapProps>(({children, ...props}, ref) => {
 
 
   return (
-    <div ref={eleRef} style={{height: '100%', width: '100%'}}>
+    <div ref={eleRef} style={{height: '100%', width: '100%', ...props.style}} className={props.className}>
       { map ? <MapContextProvider value={{map}}>{ children }</MapContextProvider> : null }
     </div>
   )

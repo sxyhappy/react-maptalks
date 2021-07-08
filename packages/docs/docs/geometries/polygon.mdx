@@ -1,0 +1,51 @@
+---
+sidebar_label: "Polygon"
+sidebar_position: 6
+---
+
+# Polygon
+
+## Example
+
+```jsx live=true
+function PolygonExample() {
+  const view = { center: [-0.113049,51.49856], pitch: 0, zoom: 14 };
+  const [visible, setVisible] = useState(true);
+  const polygonConfig = {
+    symbol: {
+      'lineColor' : '#34495e',
+      'lineWidth' : 2,
+      'polygonFill' : 'rgb(135,196,240)',
+      'polygonOpacity' : 0.6
+    },
+    coordinates: [
+      [
+        [-0.131049, 51.498568],
+        [-0.107049, 51.498568],
+        [-0.107049, 51.493568],
+        [-0.131049, 51.493568],
+        [-0.131049, 51.498568]
+      ]
+    ],
+  }
+
+  return (
+    <>
+      <button onClick={() => setVisible(!visible)}>change visible</button>
+      <MtMap {...view} style={{height: 400}}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+
+        <MtVectorLayer id={'vector'}>
+          <MtPolygon {...polygonConfig} visible={visible} />
+        </MtVectorLayer>
+      </MtMap>
+    </>
+  )
+}
+
+```

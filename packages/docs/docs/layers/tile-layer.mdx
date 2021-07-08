@@ -18,9 +18,9 @@ function TileExample() {
   }
 
   return (
-    <div style={{height: 400}}>
+    <>
       <button onClick={() => setBoundaryVisible(!boundaryVisible)}>change visible</button>
-      <MtMap {...view} onReady={handleTitleLayerReady}>
+      <MtMap {...view} onReady={handleTitleLayerReady} style={{height: 400}}>
         <MtTileLayer
           ref={instance => ref.current = instance}
           id={"base"}
@@ -36,7 +36,7 @@ function TileExample() {
           subdomains={['a','b','c','d']}
         />
       </MtMap>
-    </div>
+    </>
   )
 }
 ```

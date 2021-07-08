@@ -10,5 +10,5 @@ export interface TileLayerOptions extends LayerOptions {
 }
 
 export declare class TileLayer extends Layer {
-  constructor(id: string | number, options: TileLayerOptions);
+  constructor(id: string | number, options?: TileLayerOptions);
 }

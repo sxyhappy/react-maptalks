@@ -6,5 +6,5 @@ export interface MarkerOptions extends GeometryOptions {
 }
 
 export declare class Marker extends Geometry {
-  constructor(coordinates: Coordinate | [number, number], option: MarkerOptions);
+  constructor(coordinates: Coordinate | [number, number], option?: MarkerOptions);
 }
