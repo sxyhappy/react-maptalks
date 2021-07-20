@@ -1,0 +1,67 @@
+---
+sidebar_label: "ArcCurve"
+sidebar_position: 8
+---
+
+# ArcCurve
+
+## Example
+
+```jsx live=true
+function ArcCurveExample() {
+  const view = { center: [-0.133049,51.49856], pitch: 0, zoom: 14 };
+  const [visible, setVisible] = useState(true);
+  const c = new maptalks.Coordinate(-0.113049, 51.49856);
+  const arcCurveConfig = {
+    symbol: [
+      {
+        lineColor: '#34495e',
+        lineWidth: 3
+      },
+      {
+        markerType : 'ellipse',
+        markerWidth : 8,
+        markerHeight : 8,
+        markerFill : '#f00',
+        markerPlacement : 'vertex'
+      },
+      {
+        textName : 'ArcCurve',
+        textFill : '#f00',
+        textWeight : 'bold',
+        textHaloColor : '#fff',
+        textHaloRadius : 3,
+        textSize : 20,
+        textWrapCharacter : '\n'
+      }
+    ],
+    coordinates: [
+      c.add(-0.0202, 0.0081),
+      c.add(-0.0269, 0.0069),
+      c.add(-0.0369, 0.0032),
+      c.add(-0.0314, -0.003),
+      c.add(-0.0278, -0.008),
+      c.add(-0.0220, -0.009)
+    ],
+  }
+
+  return (
+    <>
+      <button onClick={() => setVisible(!visible)}>change visible</button>
+      <MtMap {...view} style={{height: 400}}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+
+        <MtVectorLayer id={'vector'}>
+          <MtArcCurve {...arcCurveConfig} visible={visible} />
+        </MtVectorLayer>
+      </MtMap>
+    </>
+  )
+}
+
+```

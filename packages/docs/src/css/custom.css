@@ -23,3 +23,21 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+button {
+  border: 0;
+  padding: 8px 20px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  color: #FFFFFF;
+  background: var(--ifm-color-primary);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, .1);
+  transition: all .3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--ifm-color-primary-darkest);
+}

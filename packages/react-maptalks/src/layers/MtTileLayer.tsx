@@ -13,7 +13,7 @@ const defaultProps: Partial<MtTileLayerOptions> = {
   opacity: 1,
 }
 
-const MtTileLayerWrapper: FC<MtTileLayerOptions> = (props) => {
+const MtTileLayerComp: FC<MtTileLayerOptions> = (props) => {
   const { map } = useMap();
   const { layer, setLayer } = useLayer();
 
@@ -31,9 +31,9 @@ const MtTileLayerWrapper: FC<MtTileLayerOptions> = (props) => {
   return null;
 };
 
-MtTileLayerWrapper.defaultProps = defaultProps;
-MtTileLayerWrapper.displayName = 'MtTileLayer';
+MtTileLayerComp.defaultProps = defaultProps;
+MtTileLayerComp.displayName = 'MtTileLayer';
 
-const MtTileLayer = createLayer(MtTileLayerWrapper)
+const MtTileLayer = createLayer(MtTileLayerComp)
 
 export { MtTileLayer, MtTileLayerOptions };

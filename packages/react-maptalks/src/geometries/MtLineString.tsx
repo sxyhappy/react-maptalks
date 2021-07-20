@@ -11,7 +11,7 @@ const defaultProps: Partial<MtLineStringProps> = {
   infoVisible: false
 }
 
-const MtLineStringWrapper: FC<MtLineStringProps> = (props) => {
+const MtLineStringComp: FC<MtLineStringProps> = (props) => {
   const { children, ...rest } = props;
   const { geometry, setGeometry } = useGeometry();
   const { layer } = useLayer();
@@ -32,9 +32,9 @@ const MtLineStringWrapper: FC<MtLineStringProps> = (props) => {
   )
 }
 
-MtLineStringWrapper.displayName = 'MtLineString';
-MtLineStringWrapper.defaultProps = defaultProps;
+MtLineStringComp.displayName = 'MtLineString';
+MtLineStringComp.defaultProps = defaultProps;
 
-const MtLineString = createGeometry(MtLineStringWrapper);
+const MtLineString = createGeometry(MtLineStringComp);
 
 export { MtLineString, MtLineStringProps };

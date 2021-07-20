@@ -12,7 +12,7 @@ const defaultProps: Partial<MtImageLayerProps> = {
   images: []
 }
 
-const MtImageLayerWrapper: FC<MtImageLayerProps> = (props) => {
+const MtImageLayerComp: FC<MtImageLayerProps> = (props) => {
   const { map } = useMap();
   const { layer, setLayer } = useLayer<ImageLayer>();
 
@@ -30,9 +30,9 @@ const MtImageLayerWrapper: FC<MtImageLayerProps> = (props) => {
   return null;
 }
 
-MtImageLayerWrapper.defaultProps = defaultProps;
-MtImageLayerWrapper.displayName = 'MtImageLayer';
+MtImageLayerComp.defaultProps = defaultProps;
+MtImageLayerComp.displayName = 'MtImageLayer';
 
-const MtImageLayer = createLayer(MtImageLayerWrapper);
+const MtImageLayer = createLayer(MtImageLayerComp);
 
 export { MtImageLayer, MtImageLayerProps };

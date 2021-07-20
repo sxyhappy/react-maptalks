@@ -9,7 +9,7 @@ const defaultProps: Partial<MtOverviewProps> = {
   visible: true
 }
 
-const MtOverviewInstance: FC<MtOverviewProps> = (props) => {
+const MtOverviewComp: FC<MtOverviewProps> = (props) => {
   const { map } = useMap();
   const { control: controlElement, setControl } = useControl();
 
@@ -26,9 +26,9 @@ const MtOverviewInstance: FC<MtOverviewProps> = (props) => {
   return null;
 }
 
-MtOverviewInstance.displayName = 'MtOverview';
-MtOverviewInstance.defaultProps = defaultProps;
+MtOverviewComp.displayName = 'MtOverview';
+MtOverviewComp.defaultProps = defaultProps;
 
-const MtOverview = createControl(MtOverviewInstance);
+const MtOverview = createControl(MtOverviewComp);
 
 export { MtOverview, MtOverviewProps };

@@ -1,4 +1,4 @@
-import { MapEvent } from '../MapEvent';
+import { MapEvent } from '../Eventable';
 import { Coordinate } from '../Coordinate';
 import { Layer } from '../layers';
 import { Map } from '../Map';
@@ -6,6 +6,9 @@ import { PointExtent } from '../PointExtent';
 import { Size } from '../Size';
 import { Point } from '../Point';
 import { InfoWindow } from '../ui';
+import { mixins } from '../mixins';
+import { Menuable } from '../ui/Menuable';
+import { JSONAble } from '../JSONAble';
 
 export interface GeometryOptions {
   id?: string;
@@ -20,62 +23,62 @@ export interface GeometryOptions {
   zIndex?: number;
 }
 
-export declare abstract class Geometry extends MapEvent {
+export declare abstract class Geometry extends mixins(MapEvent, Menuable, JSONAble) {
   static fromJSON(json: Record<string, any>): Geometry;
-  public getFirstCoordinate(): Coordinate;
-  public getLastCoordinate(): Coordinate;
-  public addTo(layer: Layer): this;
-  public getLayer(): Layer;
-  public getMap(): Map;
-  public getId(): string;
-  public setId(id: string): this;
-  public getProperties(): Record<string, any>;
-  public setProperties(properties: Record<string, any>): this;
-  public getType(): string;
-  public getSymbol(): Record<string, any>;
-  public setSymbol(symbol: Record<string, any>): this;
-  public updateSymbol(properties: Record<string, any>): this;
-  public getCenter(): Coordinate;
-  public getExtent(): PointExtent;
-  public getContainerExtent(): PointExtent;
-  public getSize(): Size;
-  public containsPoint(point: Point | Coordinate, t?: number): boolean;
-  public show(): this;
-  public hide(): this;
-  public isVisible(): boolean;
-  public getZIndex(): number;
-  public setZIndex(zIndex: number): this;
-  public setZIndexSilently(zIndex: number): this;
-  public bringToFront(): this;
-  public bringToBack(): this;
-  public translate(x: number, y: number): this;
-  public flash(interval?: number, count?: number, cb?: () => void, context?: any): this;
-  public copy(): this;
-  public remove(): this;
-  public toGeoJSONGeometry(): Record<string, any>;
-  public toGeoJSON(option?: {geometry?: boolean, properties?: boolean}): Record<string, any>;
-  public toJSON(options?: {geometry?: boolean, properties?: boolean, options?: boolean, symbol?: boolean, infoWindow?: boolean}): Record<string, any>;
-  public getLength(): number;
-  public getArea(): number;
-  public rotate(angle: number, pivot?: Coordinate): this;
-  public startEdit(options?: {
-    symbol?: Record<string, any>,
+  getFirstCoordinate(): Coordinate;
+  getLastCoordinate(): Coordinate;
+  addTo(layer: Layer): this;
+  getLayer(): Layer;
+  getMap(): Map;
+  getId(): string;
+  setId(id: string): this;
+  getProperties(): Record<string, any>;
+  setProperties(properties: Record<string, any>): this;
+  getType(): string;
+  getSymbol(): symbol;
+  setSymbol(symbol: symbol): this;
+  updateSymbol(properties: Record<string, any>): this;
+  getCenter(): Coordinate;
+  getExtent(): PointExtent;
+  getContainerExtent(): PointExtent;
+  getSize(): Size;
+  containsPoint(point: Point | Coordinate, t?: number): boolean;
+  show(): this;
+  hide(): this;
+  isVisible(): boolean;
+  getZIndex(): number;
+  setZIndex(zIndex: number): this;
+  setZIndexSilently(zIndex: number): this;
+  bringToFront(): this;
+  bringToBack(): this;
+  translate(x: number, y: number): this;
+  flash(interval?: number, count?: number, cb?: () => void, context?: any): this;
+  copy(): this;
+  remove(): this;
+  toGeoJSONGeometry(): Record<string, any>;
+  toGeoJSON(option?: {geometry?: boolean, properties?: boolean}): Record<string, any>;
+  toJSON(options?: {geometry?: boolean, properties?: boolean, options?: boolean, symbol?: boolean, infoWindow?: boolean}): Record<string, any>;
+  getLength(): number;
+  getArea(): number;
+  rotate(angle: number, pivot?: Coordinate): this;
+  startEdit(options?: {
+    symbol?: symbol,
     fixAspectRatio?: boolean,
-    centerHandleSymbol?: Record<string, any>,
-    vertexHandleSymbol?: Record<string, any>,
-    newVertexHandleSymbol?: Record<string, any>,
+    centerHandleSymbol?: symbol,
+    vertexHandleSymbol?: symbol,
+    newVertexHandleSymbol?: symbol,
     removeVertexOn?: Record<string, any>,
   }): this;
-  public endEdit(): this;
-  public redoEdit(): this;
-  public undoEdit(): this;
-  public cancelEdit(): this;
-  public isEditing(): boolean;
-  public isDragging(): boolean;
-  public animate(styles: Record<string, any>, options?: {duration?: number, startTime?: number, easing?: string, repeat?: boolean}, step?: () => void): any;
-  public setInfoWindow(options: Record<string, any>): this;
-  public getInfoWindow(): InfoWindow;
-  public openInfoWindow(coordinate?: Coordinate): this;
-  public closeInfoWindow(): this;
-  public removeInfoWindow(): this;
+  endEdit(): this;
+  redoEdit(): this;
+  undoEdit(): this;
+  cancelEdit(): this;
+  isEditing(): boolean;
+  isDragging(): boolean;
+  animate(styles: Record<string, any>, options?: {duration?: number, startTime?: number, easing?: string, repeat?: boolean}, step?: () => void): any;
+  setInfoWindow(options: Record<string, any>): this;
+  getInfoWindow(): InfoWindow;
+  openInfoWindow(coordinate?: Coordinate): this;
+  closeInfoWindow(): this;
+  removeInfoWindow(): this;
 }

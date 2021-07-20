@@ -11,7 +11,7 @@ const defaultProps: Partial<MtGeometryProps> = {
   editable: false
 }
 
-const MtGeometryWrapper: FC<MtGeometryProps> = (props) => {
+const MtGeometryComp: FC<MtGeometryProps> = (props) => {
   const { children, ...rest } = props;
   const { geometry, setGeometry } = useGeometry();
   const { layer } = useLayer();
@@ -33,9 +33,9 @@ const MtGeometryWrapper: FC<MtGeometryProps> = (props) => {
   )
 }
 
-MtGeometryWrapper.displayName = 'Geometry'
-MtGeometryWrapper.defaultProps = defaultProps;
+MtGeometryComp.displayName = 'Geometry'
+MtGeometryComp.defaultProps = defaultProps;
 
-const MtGeometry = createGeometry(MtGeometryWrapper);
+const MtGeometry = createGeometry(MtGeometryComp);
 
 export { MtGeometryProps, MtGeometry }

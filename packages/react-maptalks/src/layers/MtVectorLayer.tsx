@@ -17,7 +17,7 @@ const defaultProps: Partial<MtVectorLayerOptions> = {
   opacity: 1,
 }
 
-const MtVectorLayerWrapper: FC<MtVectorLayerOptions> = (props) => {
+const MtVectorLayerComp: FC<MtVectorLayerOptions> = (props) => {
   const { map } = useMap();
   const { layer, setLayer } = useLayer<VectorLayer>();
 
@@ -47,9 +47,9 @@ const MtVectorLayerWrapper: FC<MtVectorLayerOptions> = (props) => {
   )
 };
 
-MtVectorLayerWrapper.defaultProps = defaultProps;
-MtVectorLayerWrapper.displayName = 'MtVectorLayer';
+MtVectorLayerComp.defaultProps = defaultProps;
+MtVectorLayerComp.displayName = 'MtVectorLayer';
 
-const MtVectorLayer = createLayer(MtVectorLayerWrapper);
+const MtVectorLayer = createLayer(MtVectorLayerComp);
 
 export { MtVectorLayer, MtVectorLayerOptions };

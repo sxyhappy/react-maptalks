@@ -7,5 +7,4 @@ export interface EllipseOptions extends PolygonOptions {
 
 export declare class Ellipse extends Polygon {
   constructor(center: number[] | Coordinate, width: number, height: number, options?: EllipseOptions);
-
 }

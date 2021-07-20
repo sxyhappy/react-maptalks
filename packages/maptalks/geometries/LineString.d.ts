@@ -12,7 +12,7 @@ export interface LineStringOptions extends PathOptions {
 
 export declare class LineString extends Path {
   constructor(coordinates: LineStringCoordinates, options?: LineStringOptions);
-  public setCoordinates(coordinates: LineStringCoordinates): this;
-  public getCoordinates(): LineStringCoordinates;
-  public getCenterInExtent(extent: Extent): Coordinate;
+  setCoordinates(coordinates: LineStringCoordinates): this;
+  getCoordinates(): LineStringCoordinates;
+  getCenterInExtent(extent: Extent): Coordinate;
 }

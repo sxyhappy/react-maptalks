@@ -7,9 +7,8 @@ export declare interface CircleOptions extends PolygonOptions {
 
 export declare class Circle extends Polygon {
   constructor(center: number[] | Coordinate, radius: number, options?: CircleOptions);
-  public getRadius(): number;
-  public setRadius(radius: number): this;
-  public getShell(): Coordinate[];
-  // @ts-ignore
-  public getHoles(): null;
+  getRadius(): number;
+  setRadius(radius: number): this;
+  getShell(): Coordinate[];
+  getHoles(): null;
 }

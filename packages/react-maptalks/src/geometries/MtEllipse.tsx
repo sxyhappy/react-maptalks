@@ -13,7 +13,7 @@ const defaultProps: Partial<MtEllipseProps> = {
   infoVisible: false
 }
 
-const MtEllipseWrapper: FC<MtEllipseProps> = (props) => {
+const MtEllipseComp: FC<MtEllipseProps> = (props) => {
   const { children, ...rest } = props;
   const { geometry, setGeometry } = useGeometry();
   const { layer } = useLayer();
@@ -34,9 +34,9 @@ const MtEllipseWrapper: FC<MtEllipseProps> = (props) => {
   )
 }
 
-MtEllipseWrapper.displayName = 'MtEllipse';
-MtEllipseWrapper.defaultProps = defaultProps;
+MtEllipseComp.displayName = 'MtEllipse';
+MtEllipseComp.defaultProps = defaultProps;
 
-const MtEllipse = createGeometry(MtEllipseWrapper);
+const MtEllipse = createGeometry(MtEllipseComp);
 
 export { MtEllipse, MtEllipseProps };

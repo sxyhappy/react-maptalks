@@ -1,5 +1,5 @@
 import { Map } from '../Map';
-import { MapEvent } from "../MapEvent";
+import { MapEvent } from "../Eventable";
 import { Geometry } from "../geometries";
 
 export interface LayerOptions {
@@ -22,28 +22,28 @@ export interface LayerOptions {
 export declare abstract class Layer extends MapEvent {
   static fromJSON(json: string): Layer;
 
-  public load(): void;
-  public getId(): string;
-  public setId(id: string): this;
-  public addTo(map: Map): this;
-  public setIndex(zIndex: number): this;
-  public getZIndex(): number;
-  public getMinZoom(): number;
-  public getMaxZoom(): number;
-  public getOpacity(): number;
-  public setOpacity(opacity: number): this;
+  load(): void;
+  getId(): string;
+  setId(id: string): this;
+  addTo(map: Map): this;
+  setIndex(zIndex: number): this;
+  getZIndex(): number;
+  getMinZoom(): number;
+  getMaxZoom(): number;
+  getOpacity(): number;
+  setOpacity(opacity: number): this;
   protected isCanvasRender(): boolean;
   public getMap(): Map;
-  public getProjection(): Record<string, any>;
-  public bringToFront(): this;
-  public bringToBack(): this;
-  public show(): this;
-  public hide(): this;
-  public isVisible(): boolean;
-  public remove(): this;
-  public getMask(): Geometry;
-  public setMask(mask: Geometry): this;
-  public removeMask(): this;
+  getProjection(): Record<string, any>;
+  bringToFront(): this;
+  bringToBack(): this;
+  show(): this;
+  hide(): this;
+  isVisible(): boolean;
+  remove(): this;
+  getMask(): Geometry;
+  setMask(mask: Geometry): this;
+  removeMask(): this;
   protected onLoad(): boolean;
-  public isLoaded(): boolean;
+  isLoaded(): boolean;
 }

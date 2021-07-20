@@ -6,7 +6,7 @@ export interface OverviewOptions {
   level?: number;
   maximize?: boolean;
   size?: [number, number];
-  symbol?: Record<string, unknown>;
+  symbol?: symbol;
   containerClass?: string;
   buttonClass?: string;
 }
@@ -14,8 +14,8 @@ export interface OverviewOptions {
 export declare class Overview extends Control {
   constructor(options: OverviewOptions);
 
-  public buildOn(map: Map): HTMLElement;
-  public maxmize(): this;
-  public minimize(): this;
-  public getOverviewMap(): Map;
+  buildOn(map: Map): HTMLElement;
+  maxmize(): this;
+  minimize(): this;
+  getOverviewMap(): Map;
 }

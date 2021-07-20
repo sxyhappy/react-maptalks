@@ -9,7 +9,7 @@ const defaultProps: Partial<MtZoomProps> = {
   visible: true,
 }
 
-const MtZoomInstance: FC<MtZoomProps> = (props) => {
+const MtZoomComp: FC<MtZoomProps> = (props) => {
   const { map } = useMap();
   const { control: controlElement, setControl } = useControl();
 
@@ -26,9 +26,9 @@ const MtZoomInstance: FC<MtZoomProps> = (props) => {
   return null;
 }
 
-MtZoomInstance.displayName = 'MtZoom';
-MtZoomInstance.defaultProps = defaultProps;
+MtZoomComp.displayName = 'MtZoom';
+MtZoomComp.defaultProps = defaultProps;
 
-const MtZoom = createControl(MtZoomInstance);
+const MtZoom = createControl(MtZoomComp);
 
 export { MtZoom, MtZoomProps };

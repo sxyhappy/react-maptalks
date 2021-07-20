@@ -1,4 +1,4 @@
-import { MapEvent } from '../MapEvent';
+import { MapEvent } from '../Eventable';
 import { Geometry } from '../geometries';
 import { Map } from '../Map';
 import { Size } from '../Size';
@@ -19,11 +19,11 @@ export interface UIComponentOptions {
 }
 
 export declare abstract class UIComponent extends MapEvent {
-  public addTo(owner: Map | Geometry): this;
-  public getMap(): Map;
-  public show(coordinate?: Coordinate): this;
-  public hide(): this;
-  public isVisible(): boolean;
-  public remove(): this;
-  public getSize(): Size;
+  addTo(owner: Map | Geometry): this;
+  getMap(): Map;
+  show(coordinate?: Coordinate): this;
+  hide(): this;
+  isVisible(): boolean;
+  remove(): this;
+  getSize(): Size;
 }

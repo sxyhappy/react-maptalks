@@ -13,7 +13,7 @@ const defaultProps: Partial<MtWMSLayerProps> = {
   opacity: 1
 }
 
-const MtWMSTileLayerWrapper: FC<MtWMSLayerProps> = (props) => {
+const MtWMSTileLayerComp: FC<MtWMSLayerProps> = (props) => {
   const { map } = useMap();
   const { layer, setLayer } = useLayer<WMSTileLayer>();
 
@@ -30,9 +30,9 @@ const MtWMSTileLayerWrapper: FC<MtWMSLayerProps> = (props) => {
   return null;
 };
 
-MtWMSTileLayerWrapper.defaultProps = defaultProps;
-MtWMSTileLayerWrapper.displayName = 'MtWMSTileLayer';
+MtWMSTileLayerComp.defaultProps = defaultProps;
+MtWMSTileLayerComp.displayName = 'MtWMSTileLayer';
 
-const MtWMSTileLayer = createLayer(MtWMSTileLayerWrapper);
+const MtWMSTileLayer = createLayer(MtWMSTileLayerComp);
 
 export { MtWMSTileLayer, MtWMSLayerProps };

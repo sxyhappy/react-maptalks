@@ -21,11 +21,12 @@ function MapExample() {
   }
 
   return (
-    <div style={{height: 400}}>
+    <>
       <button onClick={() => setView({ ...view, center: [-0.12,51.49] })}>设置中心</button>
       <button onClick={() => setView({ ...view, pitch: 50 })}>设置倾斜</button>
       <div>{JSON.stringify(view)}</div>
       <MtMap
+        style={{height: 400}}
         {...view}
         onReady={handleMapReady}
         ref={map => {ref.current = map}}
@@ -38,7 +39,7 @@ function MapExample() {
           attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
         />
       </MtMap>
-    </div>
+    </>
   )
 }
 

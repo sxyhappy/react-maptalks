@@ -20,6 +20,6 @@ export interface VectorLayerOptions extends OverlayLayerOptions {
 export declare class VectorLayer extends OverlayLayer {
   constructor(id: string, geometries?: Geometry | Geometry[], options?: VectorLayerOptions);
 
-  public identify(coordinate: Coordinate, options?: { tolerance?: number;  count?: number}): Geometry[];
-  public toJSON(options?: { geometries?: Record<string, unknown>, clipExtent?: Extent }): Record<string, unknown>;
+  identify(coordinate: Coordinate, options?: { tolerance?: number;  count?: number}): Geometry[];
+  toJSON(options?: { geometries?: Record<string, unknown>, clipExtent?: Extent }): Record<string, unknown>;
 }

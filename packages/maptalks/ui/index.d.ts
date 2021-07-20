@@ -1,3 +1,5 @@
-export { UIComponent, UIComponentOptions } from './UIComponent';
-export { InfoWindow, InfoWindowOptions } from './InfoWindow';
+export * from './UIComponent';
+export * from './InfoWindow';
+export * from './Menuable';
+
 

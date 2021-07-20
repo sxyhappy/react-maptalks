@@ -11,7 +11,7 @@ const defaultProps: Partial<MtPolygonProps> = {
   infoVisible: false
 }
 
-const MtPolygonWrapper: FC<MtPolygonProps> = (props) => {
+const MtPolygonComp: FC<MtPolygonProps> = (props) => {
   const { children, ...rest } = props;
   const { geometry, setGeometry } = useGeometry();
   const { layer } = useLayer();
@@ -32,9 +32,9 @@ const MtPolygonWrapper: FC<MtPolygonProps> = (props) => {
   )
 }
 
-MtPolygonWrapper.displayName = 'MtPolygon';
-MtPolygonWrapper.defaultProps = defaultProps;
+MtPolygonComp.displayName = 'MtPolygon';
+MtPolygonComp.defaultProps = defaultProps;
 
-const MtPolygon = createGeometry(MtPolygonWrapper);
+const MtPolygon = createGeometry(MtPolygonComp);
 
 export { MtPolygon, MtPolygonProps };

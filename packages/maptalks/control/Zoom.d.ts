@@ -10,5 +10,5 @@ export interface ZoomOptions {
 export declare class Zoom extends Control {
   constructor(options: ZoomOptions);
 
-  public buildOn(map: Map): HTMLElement;
+  buildOn(map: Map): HTMLElement;
 }

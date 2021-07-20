@@ -4,15 +4,14 @@ import { Extent } from '../Extent';
 
 export type PolygonCoordinates = number[][] | number[][][] | Coordinate[] | Coordinate[][];
 
-export interface PolygonOptions extends PathOptions {
-}
+export type PolygonOptions = PathOptions
 
 export declare class Polygon extends Path {
   constructor(coordinates: PolygonCoordinates, options?: PolygonOptions);
-  public setCoordinates(coordinates: PolygonCoordinates): this;
-  public getCoordinates(): PolygonCoordinates;
-  public getCenterInExtent(extent: Extent): Coordinate;
-  public getShell(): Coordinate[];
-  public getHoles(): Coordinate[][];
-  public hasHoles(): boolean;
+  setCoordinates(coordinates: PolygonCoordinates): this;
+  getCoordinates(): PolygonCoordinates;
+  getCenterInExtent(extent: Extent): Coordinate;
+  getShell(): Coordinate[];
+  getHoles(): Coordinate[][];
+  hasHoles(): boolean;
 }

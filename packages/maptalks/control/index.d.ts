@@ -1,3 +1,3 @@
-export { Control, ControlPosition } from './Control';
-export { Zoom, ZoomOptions } from './Zoom';
-export { Overview, OverviewOptions } from './Overview';
+export * from './Control';
+export * from './Zoom';
+export * from './Overview';

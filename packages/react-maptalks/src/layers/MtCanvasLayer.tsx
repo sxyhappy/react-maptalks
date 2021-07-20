@@ -11,7 +11,7 @@ const defaultProps: Partial<MtCanvasLayerProps> = {
   visible: true
 }
 
-const MtCanvasLayerWrapper: FC<MtCanvasLayerProps> = (props) => {
+const MtCanvasLayerComp: FC<MtCanvasLayerProps> = (props) => {
   const { map } = useMap();
   const { layer, setLayer } = useLayer<CanvasLayer>();
 
@@ -29,9 +29,9 @@ const MtCanvasLayerWrapper: FC<MtCanvasLayerProps> = (props) => {
   return null
 };
 
-MtCanvasLayerWrapper.defaultProps = defaultProps;
-MtCanvasLayerWrapper.displayName = 'MtCanvasLayer';
+MtCanvasLayerComp.defaultProps = defaultProps;
+MtCanvasLayerComp.displayName = 'MtCanvasLayer';
 
-const MtCanvasLayer = createLayer(MtCanvasLayerWrapper);
+const MtCanvasLayer = createLayer(MtCanvasLayerComp);
 
 export { MtCanvasLayer, CanvasLayerOptions };

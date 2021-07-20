@@ -11,7 +11,7 @@ const defaultProps: Partial<MtMarkerProps> = {
   infoVisible: false
 }
 
-const MtMarkerWrapper: FC<MtMarkerProps> = (props) => {
+const MtMarkerComp: FC<MtMarkerProps> = (props) => {
   const { children, ...rest } = props;
   const { geometry, setGeometry } = useGeometry();
   const { layer } = useLayer();
@@ -32,9 +32,9 @@ const MtMarkerWrapper: FC<MtMarkerProps> = (props) => {
   )
 }
 
-MtMarkerWrapper.displayName = 'MtMarker';
-MtMarkerWrapper.defaultProps = defaultProps;
+MtMarkerComp.displayName = 'MtMarker';
+MtMarkerComp.defaultProps = defaultProps;
 
-const MtMarker = createGeometry(MtMarkerWrapper);
+const MtMarker = createGeometry(MtMarkerComp);
 
 export { MtMarker, MtMarkerProps };

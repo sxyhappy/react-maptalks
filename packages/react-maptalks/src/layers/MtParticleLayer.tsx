@@ -11,7 +11,7 @@ const defaultProps: Partial<MtParticleLayerProps> = {
   visible: true
 }
 
-const MtParticleLayerWrapper: FC<MtParticleLayerProps> = (props) => {
+const MtParticleLayerComp: FC<MtParticleLayerProps> = (props) => {
   const { map } = useMap();
   const { layer, setLayer } = useLayer();
 
@@ -29,9 +29,9 @@ const MtParticleLayerWrapper: FC<MtParticleLayerProps> = (props) => {
   return null;
 };
 
-MtParticleLayerWrapper.defaultProps = defaultProps;
-MtParticleLayerWrapper.displayName = 'MtParticleLayer';
+MtParticleLayerComp.defaultProps = defaultProps;
+MtParticleLayerComp.displayName = 'MtParticleLayer';
 
-const MtParticleLayer = createLayer(MtParticleLayerWrapper);
+const MtParticleLayer = createLayer(MtParticleLayerComp);
 
 export { MtParticleLayer, MtParticleLayerProps };

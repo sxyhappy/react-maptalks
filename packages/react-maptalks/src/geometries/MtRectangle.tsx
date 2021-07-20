@@ -13,7 +13,7 @@ const defaultProps: Partial<MtRectangleProps> = {
   infoVisible: false
 }
 
-const MtRectangleWrapper: FC<MtRectangleProps> = (props) => {
+const MtRectangleComp: FC<MtRectangleProps> = (props) => {
   const { children, ...rest } = props;
   const { geometry, setGeometry } = useGeometry();
   const { layer } = useLayer();
@@ -34,9 +34,9 @@ const MtRectangleWrapper: FC<MtRectangleProps> = (props) => {
   )
 }
 
-MtRectangleWrapper.displayName = 'MtRectangle';
-MtRectangleWrapper.defaultProps = defaultProps;
+MtRectangleComp.displayName = 'MtRectangle';
+MtRectangleComp.defaultProps = defaultProps;
 
-const MtRectangle = createGeometry(MtRectangleWrapper);
+const MtRectangle = createGeometry(MtRectangleComp);
 
 export { MtRectangle, MtRectangleProps };

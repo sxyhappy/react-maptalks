@@ -19,7 +19,7 @@ const defaultProps: Partial<MtInfoWindowProps> = {
   visible: false
 }
 
-const MtInfoWindowWrapper: FC<MtInfoWindowProps> = (props) => {
+const MtInfoWindowComp: FC<MtInfoWindowProps> = (props) => {
   const { children, visible, ...rest } = props;
   const { map } = useMap();
   const { uiComponent, setUIComponent } = useUIComponent();
@@ -55,9 +55,9 @@ const MtInfoWindowWrapper: FC<MtInfoWindowProps> = (props) => {
   return null;
 }
 
-MtInfoWindowWrapper.displayName = 'MtInfoWindow';
-MtInfoWindowWrapper.defaultProps = defaultProps;
+MtInfoWindowComp.displayName = 'MtInfoWindow';
+MtInfoWindowComp.defaultProps = defaultProps;
 
-const MtInfoWindow = createUIComponent(MtInfoWindowWrapper);
+const MtInfoWindow = createUIComponent(MtInfoWindowComp);
 
 export { MtInfoWindow, MtInfoWindowProps }

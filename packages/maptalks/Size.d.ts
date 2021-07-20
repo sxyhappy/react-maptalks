@@ -6,11 +6,11 @@ export declare class Size {
 
   constructor(width: number, height: number);
 
-  public copy(): Size;
-  public add(size: Size): Size;
-  public equals(size: Size): boolean;
-  public multi(ratio: number): Size;
-  public toPoint(): Point;
-  public toArray(): number[];
-  public toJSON(): Record<string, unknown>
+  copy(): Size;
+  add(size: Size): Size;
+  equals(size: Size): boolean;
+  multi(ratio: number): Size;
+  toPoint(): Point;
+  toArray(): number[];
+  toJSON(): Record<string, unknown>
 }

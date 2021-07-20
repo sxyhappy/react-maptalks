@@ -14,9 +14,9 @@ export interface InfoWindowOptions extends UIComponentOptions {
 export declare class InfoWindow extends UIComponent {
   constructor(options: InfoWindowOptions);
 
-  public setContent(content: string | HTMLElement): this;
-  public getContent(): string | HTMLElement;
-  public setTitle(title: string | HTMLElement): this;
-  public getTitle(): string | HTMLElement;
-  public getTransformOrigin(): Point;
+  setContent(content: string | HTMLElement): this;
+  getContent(): string | HTMLElement;
+  setTitle(title: string | HTMLElement): this;
+  getTitle(): string | HTMLElement;
+  getTransformOrigin(): Point;
 }

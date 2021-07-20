@@ -12,7 +12,7 @@ const defaultProps: Partial<MtCircleProps> = {
   infoVisible: false
 }
 
-const MtCircleWrapper: FC<MtCircleProps> = (props) => {
+const MtCircleComp: FC<MtCircleProps> = (props) => {
   const { children, ...rest } = props;
   const { geometry, setGeometry } = useGeometry();
   const { layer } = useLayer();
@@ -33,9 +33,9 @@ const MtCircleWrapper: FC<MtCircleProps> = (props) => {
   )
 }
 
-MtCircleWrapper.displayName = 'MtCircle';
-MtCircleWrapper.defaultProps = defaultProps;
+MtCircleComp.displayName = 'MtCircle';
+MtCircleComp.defaultProps = defaultProps;
 
-const MtCircle = createGeometry(MtCircleWrapper);
+const MtCircle = createGeometry(MtCircleComp);
 
 export { MtCircle, MtCircleProps };
