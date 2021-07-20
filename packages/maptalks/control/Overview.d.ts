@@ -1,12 +1,13 @@
 import { Map } from '../Map';
 import { Control, ControlPosition } from './Control';
+import { Symbol } from '../Symbol';
 
 export interface OverviewOptions {
   position?: ControlPosition;
   level?: number;
   maximize?: boolean;
   size?: [number, number];
-  symbol?: symbol;
+  symbol?: Symbol;
   containerClass?: string;
   buttonClass?: string;
 }

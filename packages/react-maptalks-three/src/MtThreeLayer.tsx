@@ -12,7 +12,7 @@ const defaultProps: Partial<MtThreeLayerProps> = {
   visible: true,
 };
 
-const MtThreeLayerWrapper: FC<MtThreeLayerProps> = (props) => {
+const MtThreeLayerComp: FC<MtThreeLayerProps> = (props) => {
   const { map } = useMap();
   const { layer, setLayer } = useLayer<ThreeLayer>();
 
@@ -30,9 +30,9 @@ const MtThreeLayerWrapper: FC<MtThreeLayerProps> = (props) => {
   return null;
 };
 
-MtThreeLayerWrapper.defaultProps = defaultProps;
-MtThreeLayerWrapper.displayName = 'MtThreeLayer';
+MtThreeLayerComp.defaultProps = defaultProps;
+MtThreeLayerComp.displayName = 'MtThreeLayer';
 
-const MtThreeLayer = createLayer(MtThreeLayerWrapper);
+const MtThreeLayer = createLayer(MtThreeLayerComp);
 
 export { MtThreeLayer, MtThreeLayerProps };

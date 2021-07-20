@@ -1,13 +1,14 @@
 import { MapTool } from './MapTool';
 import { Layer } from '../layers';
 import { Language } from './language';
+import { Symbol } from '../Symbol';
 
 export interface DistanceToolOptions {
   language?: Language;
   metric?: boolean;
   imperial?: boolean;
-  symbol?: symbol;
-  vertexSymbol?: symbol;
+  symbol?: Symbol;
+  vertexSymbol?: Symbol;
   labelOptions?: Record<string, any>;
 }
 

@@ -6,7 +6,7 @@ export interface PathOptions extends GeometryOptions {
   enableSimplify?: boolean;
   simplifyTolerance?: number;
   enableClip?: boolean;
-  symbol?: symbol;
+  symbol?: Symbol;
 }
 
 export declare abstract class Path extends Geometry {

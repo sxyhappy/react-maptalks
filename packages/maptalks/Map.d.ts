@@ -73,7 +73,7 @@ export interface MapOptions {
   devicePixelRatio?: number;
 }
 
-export declare class Map extends mixins(MapEvent, Point, Renderable) {
+export declare class Map extends mixins(MapEvent, Renderable) {
   constructor(container: HTMLElement | string, options: MapOptions);
 
   remove(): this;

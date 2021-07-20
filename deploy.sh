@@ -3,5 +3,6 @@ export GIT_USER=sxyhappy
 export USE_SSH=false
 
 npm run build
-cd ./packages/docs || exit
-npm run deploy
+cd ./docs || exit
+yarn run deploy
+cd - || exit

@@ -16,7 +16,7 @@ export function useGeometryProps<P extends GeometryOptions & GeometryProps, T ex
   useEffect(() => {
     if (!element) return;
 
-    if (props.editable) {
+    if (props.infoVisible) {
       element.openInfoWindow();
     } else {
       element.closeInfoWindow();

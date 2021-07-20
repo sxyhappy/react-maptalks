@@ -1,5 +1,6 @@
 import { MapTool } from './MapTool';
 import { Geometry } from '../geometries';
+import { Symbol } from '../Symbol';
 
 export type DrawToolMode = 'Point'
   | 'LineString'
@@ -14,7 +15,7 @@ export type DrawToolMode = 'Point'
 
 export interface DrawToolOptions {
   mode?: DrawToolMode;
-  symbol?: symbol;
+  symbol?: Symbol;
   once?: boolean;
   autoPanAtEdge?: boolean;
 }
@@ -34,8 +35,8 @@ export class DrawTool extends MapTool {
 
   getMode(): DrawToolMode;
   setMode(mode: DrawToolMode): this;
-  getSymbol(): symbol;
-  setSymbol(symbol: symbol): this;
+  getSymbol(): Symbol;
+  setSymbol(symbol: Symbol): this;
   getCurrentGeometry(): Geometry;
   undo(): this;
   redo(): this;

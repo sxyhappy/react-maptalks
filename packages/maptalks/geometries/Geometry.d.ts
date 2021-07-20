@@ -5,10 +5,10 @@ import { Map } from '../Map';
 import { PointExtent } from '../PointExtent';
 import { Size } from '../Size';
 import { Point } from '../Point';
-import { InfoWindow } from '../ui';
+import { InfoWindow, Menuable } from '../ui';
 import { mixins } from '../mixins';
-import { Menuable } from '../ui/Menuable';
 import { JSONAble } from '../JSONAble';
+import { Symbol } from '../Symbol';
 
 export interface GeometryOptions {
   id?: string;
@@ -35,8 +35,8 @@ export declare abstract class Geometry extends mixins(MapEvent, Menuable, JSONAb
   getProperties(): Record<string, any>;
   setProperties(properties: Record<string, any>): this;
   getType(): string;
-  getSymbol(): symbol;
-  setSymbol(symbol: symbol): this;
+  getSymbol(): Symbol;
+  setSymbol(symbol: Symbol): this;
   updateSymbol(properties: Record<string, any>): this;
   getCenter(): Coordinate;
   getExtent(): PointExtent;
@@ -62,11 +62,11 @@ export declare abstract class Geometry extends mixins(MapEvent, Menuable, JSONAb
   getArea(): number;
   rotate(angle: number, pivot?: Coordinate): this;
   startEdit(options?: {
-    symbol?: symbol,
+    symbol?: Symbol,
     fixAspectRatio?: boolean,
-    centerHandleSymbol?: symbol,
-    vertexHandleSymbol?: symbol,
-    newVertexHandleSymbol?: symbol,
+    centerHandleSymbol?: Symbol,
+    vertexHandleSymbol?: Symbol,
+    newVertexHandleSymbol?: Symbol,
     removeVertexOn?: Record<string, any>,
   }): this;
   endEdit(): this;
