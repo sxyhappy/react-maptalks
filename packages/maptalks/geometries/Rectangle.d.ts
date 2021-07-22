@@ -6,6 +6,7 @@ export type RectangleOptions = PolygonOptions
 export declare class Rectangle extends Polygon {
   constructor(coordinates: number[] | Coordinate, width: number, height: number, options?: RectangleOptions);
 
+  // @ts-ignore
   getCoordinates(): Coordinate;
   setCoordinates(): this;
   getWidth(): number;

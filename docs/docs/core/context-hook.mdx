@@ -1,0 +1,53 @@
+---
+sidebar_label: 'Core Context Hook'
+---
+
+# Context and Hook
+
+:::caution
+只推荐使用本页面的 Hook,其他 Hook 可能会随时变化
+:::
+
+使用这些 Hook 和 context 时,必须提供父级容器
+
+## Map
+
+```jsx
+// 直接使用 map hook
+import { MapContext, useMap } from "@react-maptalks/core";
+const map = useMap();
+// 使用 map context
+const { map } = useContext(MapContext)
+```
+
+## Layer
+获取 layer context
+```jsx
+import { layerContext, useLayer } from "@react-maptalks/core";
+const { layer, setLayer } = useLayer();
+const { layer, setLayer } = useContext(layerContext)
+```
+
+## Geometry
+获取 Geometry context
+```jsx
+import { geometryContext, useGeometry } from "@react-maptalks/core";
+const { geometry, setGeometry } = useGeometry();
+const { geometry, setGeometry } = useContext(geometryContext)
+```
+
+## createUIComponent
+获取 uiComponent context
+```jsx
+import { uiComponentContext, useUIComponent } from "@react-maptalks/core";
+const { uiComponent, setUIComponent } = useUIComponent();
+const { uiComponent, setUIComponent } = useContext(uiComponentContext)
+```
+
+## control
+获取 control context
+```jsx
+import { controlContext, useControl } from "@react-maptalks/core";
+const { control, setControl } = useControl();
+const { control, setControl } = useContext(controlContext)
+```

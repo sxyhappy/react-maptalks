@@ -10,7 +10,7 @@ export interface Ready<T> {
   onReady?: (element: T) => void;
 }
 
-export interface GeometryProps {
+export interface GeometryProps extends GeometryOptions {
   infoVisible?: boolean;
   onMousedown?: Handler
   onMouseup?: Handler

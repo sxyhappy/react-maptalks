@@ -16,6 +16,27 @@ module.exports = {
       title: 'React Maptalks',
       items: [
         {
+          label: 'Components',
+          position: 'left',
+          to: 'docs/intro',
+          activeBasePath: 'docs',
+          activeBaseRegex: 'docs/(components|map|intro)',
+        },
+        {
+          label: 'Core',
+          position: 'left',
+          to: 'docs/core/start',
+          activeBasePath: 'docs',
+          activeBaseRegex: 'docs/(core)',
+        },
+        {
+          label: 'Examples',
+          position: 'left',
+          to: 'docs/examples/base',
+          activeBasePath: 'docs',
+          activeBaseRegex: 'docs/(examples)',
+        },
+        {
           href: 'https://github.com/sxyhappy/react-maptalks',
           label: 'Github',
           position: 'right',
@@ -33,7 +54,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:'https://github.com/sxyhappy/react-maptalks/tree/master/packages/docs',
+          editUrl:'https://github.com/sxyhappy/react-maptalks/blob/master/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

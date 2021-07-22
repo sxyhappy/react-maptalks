@@ -1,0 +1,60 @@
+---
+sidebar_label: 'Core Hoc'
+---
+
+## createLayer
+创建 maptalks layer HOC, eg: ImageLayer, WMSLayer
+### 函数签名
+```ts
+declare function createLayer<
+    P extends LayerOptions,
+    T extends Layer
+>(Component: FC<P>): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>>
+```
+
+### 参数
+1. P component Props 继承 maptalks 的 LayerOption
+2. T Ref current对象, 继承 maptalks Layer
+
+## createGeometry
+创建 maptalks geometry HOC, eg: Polygon, Circle
+### 函数签名
+```ts
+export declare function createGeometry<
+    P extends GeometryProps,
+    T extends Geometry
+>(Component: FC<P>): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>>;
+```
+
+### 参数
+1. P component Props 继承 @react-maptalks/core 的 GeometryProps
+2. T Ref current对象, 继承 maptalks Geometry
+
+## createUIComponent
+创建 maptalks uiComponent HOC, eg: InfoWindow, Tooltip
+### 函数签名
+```ts
+export declare function createUIComponent<
+    P extends UIComponentProps,
+    T extends ui.UIComponent
+>(Component: FC<P>): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>>;
+```
+
+### 参数
+1. P component Props 继承 @react-maptalks/core 的 UIComponentProps
+2. T Ref current对象, 继承 maptalks ui.UIComponent
+
+## createControl
+创建 maptalks control HOC, eg: Zoom, Overview
+### 函数签名
+```ts
+export declare function createControl<
+    P extends ControlProps,
+    T extends control.Control
+>(Component: FC<P>): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>>;
+```
+
+### 参数
+1. P component Props 继承 @react-maptalks/core 的 ControlProps
+2. T Ref current对象, 继承 maptalks control.Control
+

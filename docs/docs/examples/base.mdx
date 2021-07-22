@@ -1,0 +1,53 @@
+---
+sidebar_label: 'Multiple Layer'
+---
+# Multiple Layer
+
+```jsx live=true
+function MultipleLayer() {
+  const view = { center: [-0.09270712, 51.50615], pitch: 0, zoom: 14 };
+  const images = [
+    {
+      url : 'https://maptalks.org/examples/en/layer/imagelayer/raw/1.png',
+      extent: [-0.11854216406254636, 51.50043810048564, -0.09081885168461667, 51.50994770979011],
+      opacity : 1
+    },
+    {
+      url : 'https://maptalks.org/examples/en/layer/imagelayer/raw/2.png',
+      extent: [-0.10343596289067136, 51.50797115663946, -0.07897421667485105, 51.51876102463089],
+      opacity : 1
+    }
+  ]
+
+  return (
+    <>
+      <MtMap {...view} style={{height: 400}}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+
+        <MtTileLayer
+          id={"boundaries"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+        />
+
+        <MtWMSTileLayer
+          id={"wms"}
+          crs="EPSG:3857"
+          version="1.1.1"
+          layers="GDPS.ETA_NT"
+          format="image/png"
+          transparent={true}
+          urlTemplate="https://geo.weather.gc.ca/geomet"
+          uppercase={true}
+        />
+
+        <MtImageLayer id={'image'} images={images} crossOrigin={'https://maptalks.org'} />
+      </MtMap>
+    </>
+  )
+}
