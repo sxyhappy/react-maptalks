@@ -1,0 +1,18 @@
+/*!
+ * Code from baidu mapv
+ * License: BSD-3
+ * https://github.com/huiyan-fe/mapv
+ *
+ */
+
+/*!
+ * maptalks v0.49.5
+ * LICENSE : BSD-3-Clause
+ * (c) 2016-2021 maptalks.org
+ */
+
+/**
+ * @license
+ * Copyright 2010-2021 Three.js Authors
+ * SPDX-License-Identifier: MIT
+ */
