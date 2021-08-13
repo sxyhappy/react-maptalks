@@ -1,4 +1,4 @@
-import { Geometry, GeometryOptions, Layer, LayerOptions, ui, control } from 'maptalks';
+import { Geometry, GeometryOptions, Layer, LayerOptions, ui, control, MapTool } from 'maptalks';
 
 export type MapElement = Layer | Geometry | ui.UIComponent | control.Control;
 
@@ -59,3 +59,14 @@ export interface ControlProps {
   onPositionchange?: Handler
 }
 
+export interface MapToolProps {
+  enable?: boolean;
+  onDrawvertex?: Handler
+  onDrawstart?: Handler
+  onDousemove?: Handler
+  onDrawend?: Handler
+  onDdd?: Handler
+  onDnable?: Handler
+  onDisable?: Handler
+  onDemove?: Handler
+}

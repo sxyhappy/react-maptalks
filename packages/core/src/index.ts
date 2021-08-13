@@ -3,6 +3,7 @@ export * from './MapContext';
 export * from './hooks';
 export * from './utils';
 export * from './createLayer';
+export * from './createMapTool';
 export * from './createGeometry';
 export * from './createUIComponent';
 export * from './createControl';

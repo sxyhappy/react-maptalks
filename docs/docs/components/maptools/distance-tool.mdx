@@ -1,0 +1,31 @@
+---
+sidebar_label: "DistanceTool"
+sidebar_position: 1
+---
+
+# DistanceTool
+
+## Example
+
+```jsx live=true
+function DistanceToolExample() {
+  const mapRef = useRef();
+  const view = { center: [-0.113049,51.49856], pitch: 0, zoom: 14 };
+  const [enable, toggleEnable] = useState(true);
+
+  return (
+    <>
+      <button onClick={() => toggleEnable(!enable)}>toggle enable</button>
+      <MtMap {...view} ref={mapRef} style={{height: 400}}>
+        <MtTileLayer
+          id={"base"}
+          urlTemplate="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          subdomains={['a','b','c','d']}
+          attribution={'&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'}
+        />
+        <MtDistanceTool enable={enable} />
+      </MtMap>
+    </>
+  )
+}
+```

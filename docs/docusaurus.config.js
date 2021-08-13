@@ -30,6 +30,13 @@ module.exports = {
           activeBaseRegex: 'docs/(core)',
         },
         {
+          label: 'Plugins',
+          position: 'left',
+          to: 'docs/plugins/three-layer',
+          activeBasePath: 'docs',
+          activeBaseRegex: 'docs/(plugins)',
+        },
+        {
           label: 'Examples',
           position: 'left',
           to: 'docs/examples/base',
