@@ -25,7 +25,7 @@
     "@react-maptalks/core": "0.0.1",
     "@svgr/webpack": "^5.5.0",
     "@types/react": "^17.0.6",
-    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.29.1",
     "babel-jest": "^27.0.6",
     "clsx": "^1.1.1",
