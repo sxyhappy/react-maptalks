@@ -19,7 +19,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.8",
+    "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-typescript": "^7.13.0",
     "@react-maptalks/core": "0.0.1",
